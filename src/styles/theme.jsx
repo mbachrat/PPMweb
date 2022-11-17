@@ -16,14 +16,15 @@ export const lightTheme = {
         primary: `cyrHeavy, ${extraFonts}`,
         med: `cyrMed, ${extraFonts}`,
         bold: `cyrBold, ${extraFonts}`,
-        xlight: `cyrExtraLight, ${extraFonts}`,
+       
       },
     },
     nav: {
       background: '#f9f9f9',
       fonts: {
         primary: 'rgb(19, 19, 19)',
-        hover: 'rgb(212, 212, 212)',
+        high: 'rgb(83, 83, 83)',
+        hover: 'rgb(80, 80, 80)',
       },
     },
   };

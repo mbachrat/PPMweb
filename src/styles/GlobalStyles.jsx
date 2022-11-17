@@ -1,12 +1,15 @@
 import { createGlobalStyle } from 'styled-components';
 
-import cyrBold from '../assets/fonts/HelveticaNeu-Bold.ttf';
-import cyrMedium from '../assets/fonts/HelveticaNeu-Medium.ttf';
-import cyrLight from '../assets/fonts/HelveticaNeu-Light.ttf';
-import cyrHeavy from '../assets/fonts/HelveticaNeu-heavy.ttf';
-import cyrExtraLight from '../assets/fonts/HelveticaNeu-xlight.ttf';
+// import cyrBold from '../assets/fonts/HelveticaNeu-Bold.ttf';
+// import cyrMedium from '../assets/fonts/HelveticaNeu-Medium.ttf';
+// import cyrLight from '../assets/fonts/HelveticaNeu-Light.ttf';
+// import cyrHeavy from '../assets/fonts/HelveticaNeu-heavy.ttf';
+// import cyrExtraLight from '../assets/fonts/HelveticaNeu-xlight.ttf';
 
-
+import cyrBold from '../assets/fonts/HelveticaNeueCyr-Bold.woff';
+import cyrMedium from '../assets/fonts/HelveticaNeueCyr-Medium.woff';
+import cyrLight from '../assets/fonts/HelveticaNeueCyr-Light.woff';
+import cyrRoman from '../assets/fonts/HelveticaNeueCyr-Roman.woff';
 
 
 const GlobalStyles = createGlobalStyle`
@@ -16,24 +19,21 @@ const GlobalStyles = createGlobalStyle`
 }
 @font-face {
   font-family: 'cyrLight';
-  src: url(${cyrLight}) format('ttf');
+  src: url(${cyrLight}) format('woff');
 }
 @font-face {
   font-family: 'cyrBold';
-  src: url(${cyrBold}) format('ttf');
+  src: url(${cyrBold}) format('woff');
 }
 @font-face {
   font-family: 'cyrMed';
-  src: url(${cyrMedium}) format('ttf');
+  src: url(${cyrMedium}) format('woff');
 }
 @font-face {
-  font-family: 'cyrHeavy';
-  src: url(${cyrHeavy}) format('ttf');
+  font-family: 'cyrRoman';
+  src: url(${cyrRoman}) format('woff');
 }
-@font-face {
-  font-family: 'cyrExtraLight';
-  src: url(${cyrExtraLight}) format('ttf');
-}
+
 
 
 html {
