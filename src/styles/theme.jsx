@@ -10,6 +10,7 @@ export const lightTheme = {
         primary: 'rgb(19, 19, 19)',
         secondary: '#152E66',
         third: '#0699CD',
+        four: '#F6F6F6',
       },
       fontFamily: {
         light: `cyrLight, ${extraFonts}`,
@@ -24,7 +25,7 @@ export const lightTheme = {
       fonts: {
         primary: 'rgb(19, 19, 19)',
         high: 'rgb(83, 83, 83)',
-        hover: 'rgb(80, 80, 80)',
+        hover: 'rgba(80, 80, 80, 0.725)',
       },
     },
   };

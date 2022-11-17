@@ -251,7 +251,7 @@ background-color: ${({ theme }) => theme.main.fonts.third};
 color: ${({ theme }) => theme.nav.background};
 height: 45px;
 margin-top: 20px;
-margin-bottom: 20px;
+margin-bottom: 30px;
 cursor: pointer;
 
 transition: background-color 0.5s;
