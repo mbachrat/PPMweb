@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Card from '../extras/Card'
 import goal from "../../assets/symbols/goals.svg"
 import about from '../../assets/img/about.png'
+import { Divider } from '@mui/material'
 
 function About() {
   return (
@@ -45,7 +46,6 @@ export default About
 const Outer = styled.div`
     display: flex;
     justify-content: center;
-    height: 70vh;
    padding-left: 6.5vw;
    padding-right: 6.5vw;
    margin-top: 15vh;
@@ -58,7 +58,7 @@ const Left = styled.div`
     justify-content: space-between;
 `
 const Right = styled.img`
-
+   height: 70vh;
    @media only screen and (max-width: 1290px) {
     display: none;
   }
@@ -70,7 +70,7 @@ const Title = styled.h1`
     background: -webkit-linear-gradient(45deg,#0699CD, #152E66);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-    margin-bottom: -70px;
+  margin-bottom: 25px;
 
     @media only screen and (max-width: 960px) {
         margin-bottom: 15px;
@@ -81,7 +81,7 @@ const Body = styled.p`
      font-family: ${({ theme }) => theme.main.fontFamily.light};
      color: ${({ theme }) => theme.main.fonts.primary};
     font-size: 24px;
-
+    margin-bottom: 80px;
 
     @media only screen and (max-width: 960px) {
         margin-bottom: 80px;
