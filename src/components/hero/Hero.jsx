@@ -21,7 +21,7 @@ const Outer = styled.div`
 `
 const Title = styled.h1`
     position: absolute;
-    top: 40vh;
+    top: 35vh;
     padding: 40px;
     text-align: center;
     color: ${({ theme }) => theme.nav.background};
@@ -30,7 +30,7 @@ const Title = styled.h1`
     text-shadow: 0 0 10px ${({ theme }) => theme.nav.fonts.hover};
 
     @media only screen and (max-width: 599px) {
-    top: 15vh;
+    top: 10vh;
   }
 `
 const HeroImage = styled.div`

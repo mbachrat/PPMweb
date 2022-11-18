@@ -27,15 +27,17 @@ function Card({
 export default Card
 
 const Outer = styled.div`
-    
+    height: 255px;
+
     
 `
 const TextBox = styled.div`
     background-color: ${({ theme }) => theme.main.fonts.four};
     border-radius: 7px;
-    width: 200px;
+    width: 250px;
     height: 250px;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    
 `
 const Title = styled.h1`
     color: ${({ theme }) => theme.main.fonts.secondary};
