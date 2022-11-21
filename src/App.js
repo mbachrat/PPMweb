@@ -6,11 +6,10 @@ import './App.css';
 import React from 'react';
 import DrawerAppBar from './components/nav/Nav';
 import Hero from './components/hero/Hero';
-import Card from './components/extras/Card';
 import About from './components/about/About';
 import Services from './components/services/Services';
-import CardTwo from './components/extras/CardTwo';
 import Communities from './components/communities/Communities';
+import Footer from './components/footer/Footer';
 
 
 function App() {
@@ -23,6 +22,7 @@ function App() {
     <About />    
     <Services />
     <Communities />
+    <Footer />
   </ThemeProvider>
 );
 }

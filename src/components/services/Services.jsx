@@ -100,7 +100,7 @@ padding-left: 6.5vw;
 const Title = styled.h1`
     font-family: ${({ theme }) => theme.main.fontFamily.primary};
      color: ${({ theme }) => theme.main.background};
-     font-size: 50px;
+     font-size: 60px;
      padding-bottom:30px ;
      padding-top:70px ;
 `

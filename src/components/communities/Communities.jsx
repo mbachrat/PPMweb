@@ -19,6 +19,7 @@ function Communities() {
         ainfo= "1270 Maple Crossing Blvd. Burlington"
         winfo= "http://www.thepalacecondo.com"
         src= {baxter}
+        website= "http://www.thepalacecondo.com"
     />
             <CardTwo 
         title= "The Palace"
@@ -26,6 +27,7 @@ function Communities() {
         ainfo= "1270 Maple Crossing Blvd. Burlington"
         winfo= "http://www.thepalacecondo.com"
         src= {baxter}
+        website= "http://www.thepalacecondo.com"
     />
             <CardTwo 
         title= "The Palace"
@@ -33,6 +35,7 @@ function Communities() {
         ainfo= "1270 Maple Crossing Blvd. Burlington"
         winfo= "http://www.thepalacecondo.com"
         src= {baxter}
+        website= "http://www.thepalacecondo.com"
     />
             <CardTwo 
         title= "The Palace"
@@ -40,6 +43,7 @@ function Communities() {
         ainfo= "1270 Maple Crossing Blvd. Burlington"
         winfo= "http://www.thepalacecondo.com"
         src= {baxter}
+        website= "http://www.thepalacecondo.com"
     />
             <CardTwo 
         title= "The Palace"
@@ -47,6 +51,7 @@ function Communities() {
         ainfo= "1270 Maple Crossing Blvd. Burlington"
         winfo= "http://www.thepalacecondo.com"
         src= {baxter}
+        website= "http://www.thepalacecondo.com"
     />
             <CardTwo 
         title= "The Palace"
@@ -54,6 +59,7 @@ function Communities() {
         ainfo= "1270 Maple Crossing Blvd. Burlington"
         winfo= "http://www.thepalacecondo.com"
         src= {baxter}
+        website= "http://www.thepalacecondo.com"
     />
 
         </Buildings>
@@ -70,6 +76,7 @@ const Outer = styled.div`
    padding-right: 6.5vw;
    margin-top: 15vh;
    margin-bottom: 15vh;
+  
 `
 const Title = styled.h1`
     font-size: 70px;
@@ -80,7 +87,7 @@ const Title = styled.h1`
   margin-bottom: 75px;
 
     @media only screen and (max-width: 960px) {
-        margin-bottom: 15px;
+        margin-bottom: 50px;
         font-size: 50px;
   }
 `
@@ -89,6 +96,9 @@ const Buildings = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 20px;
+    @media only screen and (max-width: 717px) {
+        justify-content: center;
+    }
 `
 
 

@@ -10,7 +10,7 @@ export const lightTheme = {
         primary: 'rgb(19, 19, 19)',
         secondary: '#152E66',
         third: '#0699CD',
-        four: '#F6F6F6',
+        four: '#f6f6f6',
       },
       fontFamily: {
         light: `cyrLight, ${extraFonts}`,

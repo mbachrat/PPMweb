@@ -246,11 +246,12 @@ justify-content: center;
 align-items: center;
 gap: 6px;
 padding: 10px;
+padding-top: 12px;
 border-radius: 7px;
 background-color: ${({ theme }) => theme.main.fonts.third};
 color: ${({ theme }) => theme.nav.background};
 height: 45px;
-margin-top: 20px;
+margin-top: 30px;
 margin-bottom: 30px;
 cursor: pointer;
 

@@ -11,6 +11,7 @@ function CardTwo({
     ainfo,
     winfo,
     src,
+    website,
   }){
 
    
@@ -23,7 +24,9 @@ function CardTwo({
        <Subtitle>
          {sub}
        </Subtitle>
+       <Link href= {website} >
        <Image src = {src} />
+       </Link>
        <Info>
        <Box>
         <BoxTitle>
@@ -34,12 +37,12 @@ function CardTwo({
         </BoxInfo>
        </Box>
        <Box>
-        <BoxTitle>
+        {/* <BoxTitle>
             Website
         </BoxTitle>
         <BoxInfo>
             {winfo}
-        </BoxInfo>
+        </BoxInfo> */}
        </Box>
        </Info>
       
@@ -54,6 +57,10 @@ const Outer = styled.div`
 display: flex;
 flex-direction: column;
     width: 400px;
+
+    @media only screen and (max-width: 960px) {
+     width:300px ;
+    }
    
 `
 const Subtitle = styled.h3`
@@ -66,13 +73,14 @@ const Title = styled.h1`
     color: ${({ theme }) =>  theme.main.fonts.secondary};
     font-family: ${({ theme }) => theme.main.fontFamily.bold};
     font-size: 30px;
-   
-    
 `
 const Image = styled.img`
+ width: 400px;
+
+
    border-radius: 15px;
    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; */
-    margin-bottom: 20px;
+    margin-bottom: 1px;
     opacity: 0.7;
 
     transition: opacity 0.5s;
@@ -81,6 +89,10 @@ const Image = styled.img`
         
         opacity: 1;
     }
+
+    @media only screen and (max-width: 960px) {
+ width:300px ;
+}
     
 `
 const Info = styled.div`
@@ -91,6 +103,11 @@ padding: 15px;
 /* box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; */
 margin-bottom: 30px;
 
+@media only screen and (max-width: 960px) {
+     flex-direction: column;
+     gap: 14px;
+    }
+
 `
 const Box = styled.div`
 
@@ -98,11 +115,17 @@ const Box = styled.div`
 const BoxTitle = styled.h2`
 font-family: ${({ theme }) => theme.main.fontFamily.med};
 font-size: 19px;
+
     
 `
 const BoxInfo = styled.p`
     color: ${({ theme }) => theme.nav.fonts.high};
     font-family: ${({ theme }) => theme.main.fontFamily.light};
-    font-size: 15px;
+    font-size: 17px;
     
 `
+const Link = styled.a`
+    
+    
+`
+
