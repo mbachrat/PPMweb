@@ -4,11 +4,11 @@ import CardTwo from '../extras/CardTwo'
 import baxter from '../../assets/img/baxter.png'
 import { Divider } from '@mui/material'
 
-function Communities() {
-    
+
+function Communities() {   
   return (
     <Outer>
-        <Title id='Community'>
+        <Title id="Community">
             Communities
             <Divider sx={{opacity: 0.7}} />
         </Title>

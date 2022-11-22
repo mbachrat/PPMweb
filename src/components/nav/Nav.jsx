@@ -143,14 +143,16 @@ function DrawerAppBar(props) {
                         <Texter href='https://app.condocontrol.com/login' target="_blank">
                               Resident<br/> Login
                         </Texter>
-                        <Texter href='#Community'>
+                        <Texter href='/#Community'>
                             Communities
                         </Texter>
-                        <Texter href='#About'>
+                        <Texter href='/#About'>
                             About
                         </Texter>
                       </TextsLeft>
+                      <Home href="/">
                       <Logo src={logo} />
+                      </Home>
                       <TextsRight>
                           <Texter href='https://app.condocontrol.com/status-certificates/begin-order' target="_blank">
                                 Status<br/> Certificate
@@ -162,7 +164,7 @@ function DrawerAppBar(props) {
                               Contractors
                           </Texter>
                           
-                            <SpecialButton>
+                            <SpecialButton href='/contact'>
                                 Contact
                                 <ArrowForwardIcon fontSize="large"/>
                               </SpecialButton>
@@ -242,6 +244,11 @@ const TextsLeft = styled.div`
  text-align: center;
 
 `
+
+const Home = styled.a`
+
+`
+
 const TextsRight = styled.div`
   display: flex;
   justify-content: space-between;
@@ -282,7 +289,7 @@ padding-right: 20px;
   }
 
 `
-const SpecialButton = styled.div`
+const SpecialButton = styled.a`
 display: flex;
 justify-content: center;
 align-items: center;

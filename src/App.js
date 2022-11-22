@@ -11,6 +11,8 @@ import Services from './components/services/Services';
 import Communities from './components/communities/Communities';
 import Footer from './components/footer/Footer';
 import Contact from './components/contact/Contact';
+import HeroContact from './components/contact/HeroContact';
+import Form from './components/form/Form';
 
 
 function App() {
@@ -19,7 +21,9 @@ function App() {
       <Route path='/contact' element = {<ThemeProvider theme={lightTheme}>
         <GlobalStyles />
         <DrawerAppBar />
+        <HeroContact />
         <Contact />
+        <Form />
         <Footer />
       </ThemeProvider>}/>
 
