@@ -8,8 +8,9 @@ import { Divider } from '@mui/material'
 function About() {
   return (
     <Outer>
+        <Anchor class="anchor" id="About"></Anchor>
         <Left>
-            <Title>
+            <Title >
                 About Us
             </Title>
             <Body>
@@ -52,6 +53,14 @@ const Outer = styled.div`
    margin-bottom: 15vh;
     gap: 30px;
 `
+const Anchor = styled.a`
+     display: block;
+    position: relative;
+    top: -127px;
+    visibility: hidden;
+`
+
+
 const Left = styled.div`
     display: flex;
     flex-direction: column;

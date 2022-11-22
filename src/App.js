@@ -1,6 +1,6 @@
 import GlobalStyles from './styles/GlobalStyles';
 import { ThemeProvider } from 'styled-components';
-// import {Route, Routes} from "react-router-dom"
+import {Route, Routes} from "react-router-dom"
 import { lightTheme } from './styles/theme.jsx';
 import './App.css';
 import React from 'react';
@@ -10,20 +10,30 @@ import About from './components/about/About';
 import Services from './components/services/Services';
 import Communities from './components/communities/Communities';
 import Footer from './components/footer/Footer';
+import Contact from './components/contact/Contact';
 
 
 function App() {
   return (
+    <Routes>
+      <Route path='/contact' element = {<ThemeProvider theme={lightTheme}>
+        <GlobalStyles />
+        <DrawerAppBar />
+        <Contact />
+        <Footer />
+      </ThemeProvider>}/>
+
+      <Route path='/' element = {<ThemeProvider theme={lightTheme}>
+          <GlobalStyles />
+          <DrawerAppBar />
+          <Hero />
+          <About />    
+          <Services />
+          <Communities />
+          <Footer /> 
+      </ThemeProvider>}/>
     
-    <ThemeProvider theme={lightTheme}>
-    <GlobalStyles />
-    <DrawerAppBar />
-    <Hero />
-    <About />    
-    <Services />
-    <Communities />
-    <Footer />
-  </ThemeProvider>
+  </Routes>
 );
 }
 

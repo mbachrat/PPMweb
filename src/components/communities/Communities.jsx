@@ -8,7 +8,7 @@ function Communities() {
     
   return (
     <Outer>
-        <Title>
+        <Title id='Community'>
             Communities
             <Divider sx={{opacity: 0.7}} />
         </Title>

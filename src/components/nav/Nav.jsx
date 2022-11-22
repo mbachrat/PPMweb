@@ -57,13 +57,55 @@ function DrawerAppBar(props) {
       <img style={{margin: 8}} src={logo} alt='logo' height={35}/>
       <Divider sx={{ m: 2}} />
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
+        
+          <ListItem disablePadding>
+           
+              <ButtonDrawer>
+              <ListItemButton sx={{ textAlign: 'center' }}>
+            <TexterMobile href='https://app.condocontrol.com/registration' target="_blank">
+                              Resident<br/> Registration
+                        </TexterMobile>
+                        </ListItemButton>
+                        <ListItemButton sx={{ textAlign: 'center' }}>
+                        <TexterMobile href='https://app.condocontrol.com/login' target="_blank">
+                              Resident<br/> Login
+                        </TexterMobile>
+                        </ListItemButton>
+                        <ListItemButton sx={{ textAlign: 'center' }}>
+                        <TexterMobile href='#Community'>
+                            Communities
+                        </TexterMobile>
+                        </ListItemButton>
+                        <ListItemButton sx={{ textAlign: 'center' }}>
+                        <TexterMobile href='#About'>
+                            About
+                        </TexterMobile>
+                        </ListItemButton>
+                        <ListItemButton sx={{ textAlign: 'center' }}>
+                          <TexterMobile href='https://app.condocontrol.com/status-certificates/begin-order' target="_blank">
+                                Status<br/> Certificate
+                          </TexterMobile>
+                          </ListItemButton>
+                          <ListItemButton sx={{ textAlign: 'center' }}>
+                          <TexterMobile href='https://app.condocontrol.com/login?NextPage=%2fservicerequest%2fadd-new-service-request' target="_blank">
+                                Service<br/> Request
+                          </TexterMobile>
+                          </ListItemButton>
+                          <ListItemButton sx={{ textAlign: 'center' }}>
+                          <TexterMobile href='https://app.vendorpm.com/signup' target="_blank">
+                              Contractors
+                          </TexterMobile>
+                          </ListItemButton>
+                          <ListItemButton sx={{ textAlign: 'center' }}>
+                            <TexterMobile>
+                                Contact
+                                
+                              </TexterMobile>
+                              </ListItemButton>
+                              </ButtonDrawer>
+            
           </ListItem>
-        ))}
+      
       </List>
     </Box>
   );
@@ -95,28 +137,28 @@ function DrawerAppBar(props) {
               <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                 <TotalNav>
                   <TextsLeft>
-                        <Texter>
+                        <Texter href='https://app.condocontrol.com/registration' target="_blank">
                               Resident<br/> Registration
                         </Texter>
-                        <Texter>
+                        <Texter href='https://app.condocontrol.com/login' target="_blank">
                               Resident<br/> Login
                         </Texter>
-                        <Texter>
+                        <Texter href='#Community'>
                             Communities
                         </Texter>
-                        <Texter>
+                        <Texter href='#About'>
                             About
                         </Texter>
                       </TextsLeft>
                       <Logo src={logo} />
                       <TextsRight>
-                          <Texter>
+                          <Texter href='https://app.condocontrol.com/status-certificates/begin-order' target="_blank">
                                 Status<br/> Certificate
                           </Texter>
-                          <Texter>
-                                Status<br/> Request
+                          <Texter href='https://app.condocontrol.com/login?NextPage=%2fservicerequest%2fadd-new-service-request' target="_blank">
+                                Service<br/> Request
                           </Texter>
-                          <Texter>
+                          <Texter href='https://app.vendorpm.com/signup' target="_blank">
                               Contractors
                           </Texter>
                           
@@ -263,7 +305,17 @@ transition: background-color 0.5s;
 `
 
 
+const ButtonDrawer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  align-items: center;
+`
+const TexterMobile = styled.a`
+  padding: 10px;
 
+
+`
 
 
 

@@ -2,6 +2,17 @@ import { Divider } from '@mui/material'
 import React from 'react'
 import styled from 'styled-components'
 import Clip from "../../assets/symbols/Clip.svg"
+import data from "../../assets/symbols/data.svg"
+import bank from "../../assets/symbols/bank.svg"
+import check from "../../assets/symbols/check.svg"
+import connect from "../../assets/symbols/connect.svg"
+import docs from "../../assets/symbols/docs.svg"
+import goals from "../../assets/symbols/goals.svg"
+import idea from "../../assets/symbols/idea.svg"
+import measure from "../../assets/symbols/measure.svg"
+import services from "../../assets/symbols/services.svg"
+import suit from "../../assets/symbols/suit.svg"
+import team from "../../assets/symbols/team.svg"
 
 function Services() {
   return (
@@ -19,67 +30,67 @@ function Services() {
                 </Text>
             </Combo>
             <Combo>
-            <Logo src={Clip} />
+            <Logo src={data} />
                 <Text>
                 Contract Summary Database
                 </Text>
             </Combo>
             <Combo>
-            <Logo src={Clip} />
+            <Logo src={goals} />
                 <Text>
                 Long-Term Capital Planning
                 </Text>
             </Combo>
             <Combo>
-            <Logo src={Clip} />
+            <Logo src={bank} />
                 <Text>
                 Financial and Accounting Services
                 </Text>
             </Combo>
             <Combo>
-            <Logo src={Clip} />
+            <Logo src={services} />
                 <Text>
                 Warranty & Insurance Services
                 </Text>
             </Combo>
             <Combo>
-            <Logo src={Clip} />
+            <Logo src={suit} />
                 <Text>
                 CEF -Collection Services
                 </Text>
             </Combo>
             <Combo>
-            <Logo src={Clip} />
+            <Logo src={idea} />
                 <Text>
                 Meeting Supervision
                 </Text>
             </Combo>
             <Combo>
-            <Logo src={Clip} />
+            <Logo src={team} />
                 <Text>
                 Proprietary Online Community Portal
                 </Text>
             </Combo>
             <Combo>
-            <Logo src={Clip} />
+            <Logo src={connect} />
                 <Text>
                 Instant Mass Communication Tools
                 </Text>
             </Combo>
             <Combo>
-            <Logo src={Clip} />
+            <Logo src={check} />
                 <Text>
                 24/7 and 365 day Customer Care Centre
                 </Text>
             </Combo>
             <Combo>
-            <Logo src={Clip} />
+            <Logo src={docs} />
                 <Text>
                 Legal Records Administration
                 </Text>
             </Combo>
             <Combo>
-            <Logo src={Clip} />
+            <Logo src={measure} />
                 <Text>
                 Special Project Administration
                 </Text>

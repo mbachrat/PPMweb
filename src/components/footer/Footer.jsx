@@ -9,26 +9,26 @@ import fb from "../../assets/symbols/logo-facebook-svgrepo-com.svg"
 function Footer() {
 
     let residence = [
-        {name:"Resident Registration",link:"/"},
-        {name:"Resident Login",link:"https://www.matthewbachraty.com/"},
-        {name:"Resources", link:"www.matthewbachraty.com"},
-        {name:"Community", link:"www.matthewbachraty.com"},
+        {name:"Resident Registration",link:"https://app.condocontrol.com/registration"},
+        {name:"Resident Login",link:"https://app.condocontrol.com/login"},
+        {name:"Resources", link:"/"},
+        {name:"Community", link:"#Community"},
         
     ];
     let residenceList = residence.map(residence => <a className='Test' style={{color: "#f6f6f6", fontSize: "14px"}} href ={residence.link}>{residence.name}</a>)
 
     let content = [
-        {name:"Status Certificate",link:"/"},
-        {name:"Status Request",link:"https://www.matthewbachraty.com/"},
-        {name:"Contractors", link:"www.matthewbachraty.com"},
+        {name:"Status Certificate",link:"https://app.condocontrol.com/status-certificates/begin-order"},
+        {name:"Service Request",link:"https://app.condocontrol.com/login?NextPage=%2fservicerequest%2fadd-new-service-request"},
+        {name:"Contractors", link:"https://app.vendorpm.com/signup"},
         
     ];
     let contentList = content.map(content => <a className='Test' style={{color: "#f6f6f6", fontSize: "14px"}} href ={content.link}>{content.name}</a>)
 
     let company = [
-        {name:"About",link:"/"},
-        {name:"Contact",link:"https://www.matthewbachraty.com/"},
-        {name:"Request for Proposal", link:"www.matthewbachraty.com"},
+        {name:"About",link:"#About"},
+        {name:"Contact",link:"/"},
+        {name:"Request for Proposal", link:"/"},
         
     ];
     let companyList = company.map(company => <a className='Test' style={{color: "#f6f6f6", fontSize: "14px"}} href ={company.link}>{company.name}</a>)
