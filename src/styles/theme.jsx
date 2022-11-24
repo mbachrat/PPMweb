@@ -24,7 +24,7 @@ export const lightTheme = {
       background: '#f9f9f9',
       fonts: {
         primary: 'rgb(19, 19, 19)',
-        high: 'rgb(83, 83, 83)',
+        high: '#535353',
         hover: 'rgba(80, 80, 80, 0.725)',
       },
     },

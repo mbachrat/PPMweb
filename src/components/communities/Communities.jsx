@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, forwardRef } from 'react'
 import styled from 'styled-components'
 import CardTwo from '../extras/CardTwo'
 import baxter from '../../assets/img/baxter.png'
@@ -6,9 +6,12 @@ import { Divider } from '@mui/material'
 
 
 function Communities() {   
+
+
   return (
     <Outer>
-        <Title id="Community">
+         <Anchor class="anchor" id="Community"></Anchor>
+        <Title  >
             Communities
             <Divider sx={{opacity: 0.7}} />
         </Title>
@@ -67,7 +70,7 @@ function Communities() {
   )
 }
 
-export default Communities
+export default forwardRef(Communities);
 
 const Outer = styled.div`
     display: flex;
@@ -77,6 +80,12 @@ const Outer = styled.div`
    margin-top: 15vh;
    margin-bottom: 15vh;
   
+`
+const Anchor = styled.a`
+     display: block;
+    position: relative;
+    top: -127px;
+    visibility: hidden;
 `
 const Title = styled.h1`
     font-size: 70px;

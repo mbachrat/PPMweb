@@ -1,8 +1,10 @@
 import { Divider } from '@mui/material';
 import React from 'react'
+import { HashLink as Link } from 'react-router-hash-link';
 import styled from 'styled-components'
 import logo from "../../assets/img/ppmlogo.png"
 import fb from "../../assets/symbols/logo-facebook-svgrepo-com.svg"
+
 
 
 
@@ -12,10 +14,10 @@ function Footer() {
         {name:"Resident Registration",link:"https://app.condocontrol.com/registration"},
         {name:"Resident Login",link:"https://app.condocontrol.com/login"},
         {name:"Resources", link:"/"},
-        {name:"Community", link:"#Community"},
+        
         
     ];
-    let residenceList = residence.map(residence => <a className='Test' style={{color: "#f6f6f6", fontSize: "14px"}} href ={residence.link}>{residence.name}</a>)
+    let residenceList = residence.map(residence => <a className='Test' style={{color: "#f6f6f6", fontSize: "14px"}} to ={residence.link}>{residence.name}</a>)
 
     let content = [
         {name:"Status Certificate",link:"https://app.condocontrol.com/status-certificates/begin-order"},
@@ -26,12 +28,13 @@ function Footer() {
     let contentList = content.map(content => <a className='Test' style={{color: "#f6f6f6", fontSize: "14px"}} href ={content.link}>{content.name}</a>)
 
     let company = [
-        {name:"About",link:"#About"},
-        {name:"Contact",link:"/"},
-        {name:"Request for Proposal", link:"/"},
+        {name:"About",link:"/#About"},
+        {name:"Community", link:"/#Community"},
+        {name:"Contact",link:"/contact#contact"},
+        {name:"Request for Proposal", link:"/contact#form"},
         
     ];
-    let companyList = company.map(company => <a className='Test' style={{color: "#f6f6f6", fontSize: "14px"}} href ={company.link}>{company.name}</a>)
+    let companyList = company.map(company => <Link className='Test' style={{color: "#f6f6f6", fontSize: "14px"}} to ={company.link}>{company.name}</Link>)
 
 
 

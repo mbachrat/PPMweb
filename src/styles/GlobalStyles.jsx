@@ -90,13 +90,13 @@ select,
 textarea {
   text-align: left;
   font-family: helvetica;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 textarea::placeholder {
   font-size: 1.5rem;
 }
 input::placeholder {
-  color: rgb(126, 126, 126) !important;
+  color: rgb(186, 186, 186) !important;
   font-family: helvetica;
 }
 textarea:focus,

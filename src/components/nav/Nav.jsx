@@ -1,4 +1,5 @@
 import React from 'react'
+import { HashLink as Link } from 'react-router-hash-link';
 import styled from 'styled-components'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
@@ -48,13 +49,20 @@ function DrawerAppBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
+
+  
+
+
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <img style={{margin: 8}} src={logo} alt='logo' height={35}/>
+      <TexterMobile href='/'>
+      <img style={{marginTop: 17}} src={logo} alt='logo' height={35}/>
+      </TexterMobile>
       <Divider sx={{ m: 2}} />
       <List>
         
@@ -72,14 +80,14 @@ function DrawerAppBar(props) {
                         </TexterMobile>
                         </ListItemButton>
                         <ListItemButton sx={{ textAlign: 'center' }}>
-                        <TexterMobile href='#Community'>
+                        <Link to="/#Community" style={{padding: 10}}> 
                             Communities
-                        </TexterMobile>
+                        </Link>
                         </ListItemButton>
                         <ListItemButton sx={{ textAlign: 'center' }}>
-                        <TexterMobile href='#About'>
+                        <Link to="/#About" style={{padding: 10}}> 
                             About
-                        </TexterMobile>
+                        </Link>
                         </ListItemButton>
                         <ListItemButton sx={{ textAlign: 'center' }}>
                           <TexterMobile href='https://app.condocontrol.com/status-certificates/begin-order' target="_blank">
@@ -97,7 +105,7 @@ function DrawerAppBar(props) {
                           </TexterMobile>
                           </ListItemButton>
                           <ListItemButton sx={{ textAlign: 'center' }}>
-                            <TexterMobile>
+                            <TexterMobile href='/contact'>
                                 Contact
                                 
                               </TexterMobile>
@@ -143,12 +151,16 @@ function DrawerAppBar(props) {
                         <Texter href='https://app.condocontrol.com/login' target="_blank">
                               Resident<br/> Login
                         </Texter>
-                        <Texter href='/#Community'>
+                        <Link to="/#Community" style={{marginTop: 5}}>
+                        <Texter >
                             Communities
                         </Texter>
-                        <Texter href='/#About'>
+                        </Link>
+                        <Link to="/#About" style={{marginTop: 5}}>
+                        <Texter >
                             About
                         </Texter>
+                        </Link>
                       </TextsLeft>
                       <Home href="/">
                       <Logo src={logo} />
@@ -279,6 +291,8 @@ align-items: center;
     }
 
 `
+
+
 const Logo = styled.img`
 height: 40px;
 padding-left: 20px;

@@ -114,6 +114,11 @@ const Title = styled.h1`
      font-size: 60px;
      padding-bottom:30px ;
      padding-top:70px ;
+
+     @media only screen and (max-width: 960px) {
+       
+        font-size: 50px;
+  }
 `
 const Tools = styled.div`
     display: grid;

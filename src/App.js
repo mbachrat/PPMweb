@@ -12,7 +12,7 @@ import Communities from './components/communities/Communities';
 import Footer from './components/footer/Footer';
 import Contact from './components/contact/Contact';
 import HeroContact from './components/contact/HeroContact';
-import Form from './components/form/Form';
+import EmailContactForm from './components/form/Form';
 
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
         <DrawerAppBar />
         <HeroContact />
         <Contact />
-        <Form />
+        <EmailContactForm />
         <Footer />
       </ThemeProvider>}/>
 

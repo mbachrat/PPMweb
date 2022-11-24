@@ -14,6 +14,7 @@ import map from "../../assets/img/Map.png"
 function Contact() {
   return (
     <Outer>
+      <Anchor class="anchor" id="contact"></Anchor>
      <Left>
         <Title>
         Progress Property Managment Ltd
@@ -68,6 +69,12 @@ const Outer = styled.div`
    display: flex;
    gap: 50px;
    padding-bottom: 50px;
+`
+const Anchor = styled.a`
+     display: block;
+    position: relative;
+    top: -127px;
+    visibility: hidden;
 `
 const Left = styled.div`
   display: flex;
