@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { HashLink as Link } from 'react-router-hash-link';
 import styled from 'styled-components'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -22,6 +22,11 @@ import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Slide from '@mui/material/Slide';
 
 
+
+
+
+
+
 //HIDE FUNCTION
 
 function HideOnScroll(props) {
@@ -43,9 +48,14 @@ function HideOnScroll(props) {
 // Mobile pop out
 
 const drawerWidth = 240;
-const navItems = ['Resident Registration', 'Communities', 'About', 'Status Certificate', 'Status Request', 'Contractors', 'Contact'];
 
 function DrawerAppBar(props) {
+
+
+
+
+
+  
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -120,16 +130,31 @@ function DrawerAppBar(props) {
 
   const container = window !== undefined ? () => window().document.body : undefined;
 
+  //Colour
+
+
+const [color, setColor] = useState(false);
+
+const changeColor = () => {
+    if (window.scroll >=90) {
+      setColor(true)
+    } else {
+      setColor(false)
+    }
+}
+
+
+// window.addEventListener("scroll", changeColor)
 
 
   return (
     <React.Fragment>
-    <CssBaseline />
+    <CssBaseline  />
     <HideOnScroll {...props}>
       
-      <AppBar>
+      <AppBar style={{backgroundColor: 'transparent'}}>
         <div sx={{ display: 'flex' }}>
-          <Outer >
+          <Outer className={color ? "empty" : "filled"}>
             <Toolbar>
               <IconButton
                 color='inherit'
@@ -217,10 +242,20 @@ export default DrawerAppBar;
 
 
 const Outer = styled.div`
-  background-color: ${({ theme }) => theme.nav.background};
+  
   display: flex;
   height: 100px;
   justify-content: center;
+
+  &.filled {
+    background-color: #ffffffce;
+    backdrop-filter: blur(7px);
+  }
+
+  &.empty {
+    background-color: none;
+  }
+  
 
   @media only screen and (max-width: 960px) {
     height: 200px;

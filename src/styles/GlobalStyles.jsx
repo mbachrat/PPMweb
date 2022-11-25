@@ -105,7 +105,7 @@ input:focus {
 }
 // TEXT SELECTION
 ::selection {
-  background: #2666c6;
+  background: #006edb8e;
 }
 ::-moz-selection {
   background: #161616;

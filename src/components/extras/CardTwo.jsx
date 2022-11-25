@@ -11,6 +11,7 @@ function CardTwo({
     ainfo,
     winfo,
     src,
+    srcTwo,
     website,
   }){
 
@@ -25,7 +26,11 @@ function CardTwo({
          {sub}
        </Subtitle>
        <Link href= {website} >
-       <Image src = {src} />
+       <Image src = {src} 
+              onMouseOver={e => (e.currentTarget.src = srcTwo)}
+              onMouseOut={e => (e.currentTarget.src = src)}
+              
+              />
        </Link>
        <Info>
        <Box>
@@ -76,8 +81,7 @@ const Title = styled.h1`
 `
 const Image = styled.img`
  width: 400px;
-
-
+ height: 250px;
    border-radius: 15px;
    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; */
     margin-bottom: 1px;
@@ -92,6 +96,7 @@ const Image = styled.img`
 
     @media only screen and (max-width: 960px) {
  width:300px ;
+ height: 188px;
 }
     
 `

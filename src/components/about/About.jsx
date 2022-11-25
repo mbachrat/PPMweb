@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import Card from '../extras/Card'
 import goal from "../../assets/symbols/goals.svg"
 import about from '../../assets/img/about.png'
-import { Divider } from '@mui/material'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function About() {
+
+  useEffect(()=>{
+
+    AOS.init({duration: 2000});
+
+
+  },[])
+
+
+
   return (
-    <Outer>
+    <Outer data-aos="fade-up" data-aos-once="true">
         <Anchor class="anchor" id="About"></Anchor>
         <Left>
             <Title >
@@ -18,7 +29,7 @@ function About() {
             <br/> <br/> 
             We strive to meet and exceed the demands of modern property management. By continually enhancing our knowledge base and seeking new ways to better serve our clients, Progress Property Management not only meets our clients’ property management needs, we exceed their expectations.
             </Body>
-            <Cards>
+            <Cards data-aos="fade-up" data-aos-once="true" data-aos-delay="50">
             <Card
                 title="Our Goal"
                 body ="Our goals and objectives are to provide a more personalized degree of service to our customers, and a higher level of comfort and protection through the preservation of property value."
@@ -49,7 +60,7 @@ const Outer = styled.div`
     justify-content: center;
    padding-left: 6.5vw;
    padding-right: 6.5vw;
-   margin-top: 15vh;
+   
    margin-bottom: 15vh;
     gap: 30px;
 `
@@ -80,10 +91,12 @@ const Title = styled.h1`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 25px;
+  margin-top: 15vh;
 
     @media only screen and (max-width: 960px) {
         margin-bottom: 15px;
         font-size: 50px;
+        margin-top: 8vh;
   }
 `
 const Body = styled.p`
@@ -103,10 +116,10 @@ const Cards = styled.div`
     justify-content: space-between;
    gap: 40px;
 
-
     @media only screen and (max-width: 960px) {
     flex-direction: column;
     align-items: center;
+    margin-left: -20px;
     
   }
 `

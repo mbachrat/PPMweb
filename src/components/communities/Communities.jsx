@@ -2,6 +2,10 @@ import React, { useRef, forwardRef } from 'react'
 import styled from 'styled-components'
 import CardTwo from '../extras/CardTwo'
 import baxter from '../../assets/img/baxter.png'
+import map from '../../assets/img/Map.png'
+import W1 from '../../assets/img/W1.png'
+import W2 from '../../assets/img/W2.png'
+
 import { Divider } from '@mui/material'
 
 
@@ -17,11 +21,12 @@ function Communities() {
         </Title>
         <Buildings>
             <CardTwo 
-        title= "The Palace"
-        sub= "HCC 187"
+        title= "Waterview"
+        sub= "NNSCC 292"
         ainfo= "1270 Maple Crossing Blvd. Burlington"
         winfo= "http://www.thepalacecondo.com"
-        src= {baxter}
+        src= {W1}
+        srcTwo= {W2}
         website= "http://www.thepalacecondo.com"
     />
             <CardTwo 
@@ -30,6 +35,7 @@ function Communities() {
         ainfo= "1270 Maple Crossing Blvd. Burlington"
         winfo= "http://www.thepalacecondo.com"
         src= {baxter}
+        srcTwo= {map}
         website= "http://www.thepalacecondo.com"
     />
             <CardTwo 
@@ -38,6 +44,7 @@ function Communities() {
         ainfo= "1270 Maple Crossing Blvd. Burlington"
         winfo= "http://www.thepalacecondo.com"
         src= {baxter}
+        srcTwo= {map}
         website= "http://www.thepalacecondo.com"
     />
             <CardTwo 
@@ -46,6 +53,7 @@ function Communities() {
         ainfo= "1270 Maple Crossing Blvd. Burlington"
         winfo= "http://www.thepalacecondo.com"
         src= {baxter}
+        srcTwo= {map}
         website= "http://www.thepalacecondo.com"
     />
             <CardTwo 
@@ -54,6 +62,7 @@ function Communities() {
         ainfo= "1270 Maple Crossing Blvd. Burlington"
         winfo= "http://www.thepalacecondo.com"
         src= {baxter}
+        srcTwo= {map}
         website= "http://www.thepalacecondo.com"
     />
             <CardTwo 
@@ -62,6 +71,7 @@ function Communities() {
         ainfo= "1270 Maple Crossing Blvd. Burlington"
         winfo= "http://www.thepalacecondo.com"
         src= {baxter}
+        srcTwo= {map}
         website= "http://www.thepalacecondo.com"
     />
 

@@ -1,5 +1,5 @@
 import { Divider } from '@mui/material'
-import React from 'react'
+import React, {useEffect} from 'react'
 import styled from 'styled-components'
 import Clip from "../../assets/symbols/Clip.svg"
 import data from "../../assets/symbols/data.svg"
@@ -13,16 +13,28 @@ import measure from "../../assets/symbols/measure.svg"
 import services from "../../assets/symbols/services.svg"
 import suit from "../../assets/symbols/suit.svg"
 import team from "../../assets/symbols/team.svg"
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function Services() {
+
+    useEffect(()=>{
+
+        AOS.init({duration: 2000});
+    
+    
+      },[])
+
+
+
   return (
     <Outer>
-        <Title>
+        <Title data-aos="fade-up" data-aos-once="true">
             Services
             <Divider sx={{ bgcolor: "white", opacity: 0.1, margin: "10px" }} />
         </Title >
         
-        <Tools>
+        <Tools data-aos="fade-up" data-aos-once="true">
             <Combo>
                 <Logo src={Clip} />
                 <Text>

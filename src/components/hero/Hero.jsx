@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import background from "../../assets/img/hero.jpg";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function Hero() {
+
+
+  useEffect(()=>{
+
+    AOS.init({duration: 2000});
+
+
+  },[])
+
+
+
+
   return (
     <Outer>
         <HeroImage></HeroImage>
-        <Title>Progress PM is a Premier Building Managment Company</Title>
+        <Title data-aos="fade">Progress PM is a Premier Building Managment Company</Title>
     </Outer>
     
   )
@@ -28,6 +42,9 @@ const Title = styled.h1`
     font-family: ${({ theme }) => theme.main.fontFamily.bold};
     font-size: clamp(50px, 5vw, 100px);
     text-shadow: 0 0 10px ${({ theme }) => theme.nav.fonts.hover};
+    opacity: 0;
+    transition: opacity 3s;
+
 
     @media only screen and (max-width: 599px) {
     top: 10vh;

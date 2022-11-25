@@ -13,11 +13,11 @@ function Footer() {
     let residence = [
         {name:"Resident Registration",link:"https://app.condocontrol.com/registration"},
         {name:"Resident Login",link:"https://app.condocontrol.com/login"},
-        {name:"Resources", link:"/"},
+        {name:"Resources", link:"https://www.condoauthorityontario.ca/resources/"},
         
         
     ];
-    let residenceList = residence.map(residence => <a className='Test' style={{color: "#f6f6f6", fontSize: "14px"}} to ={residence.link}>{residence.name}</a>)
+    let residenceList = residence.map(residence => <a className='Test' style={{color: "#f6f6f6", fontSize: "14px"}} href ={residence.link} target="blank">{residence.name}</a>)
 
     let content = [
         {name:"Status Certificate",link:"https://app.condocontrol.com/status-certificates/begin-order"},

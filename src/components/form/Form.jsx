@@ -1,22 +1,62 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import styled from 'styled-components';
 import { Divider } from '@mui/material';
 
 
 const EmailContactForm = () => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [boardposition, setBoardposition] = useState('');
+  const [streetaddress, setStreetaddress] = useState('');
+  const [linetwo, setLinetwo] = useState('');
+  const [city, setCity] = useState('');
+  const [postalcode, setPostalcode] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [condocorp, setCondocorp] = useState('');
+  const [buildingstructure, setBuildingstructure] = useState('');
+  const [buildingtype, setBuildingtype] = useState('');
+  const [units, setUnits] = useState('');
+  const [buildingaddress, setBuildingaddress] = useState('');
+  const [buildingline, setBuildingline] = useState('');
+  const [buildingcity, setBuildingcity] = useState('');
+  const [buildingcode, setBuildingcode] = useState('');
   const form = useRef();
   
   const sendEmail = (e) => {
-    // e.preventDefault(); // prevents the page from reloading when you hit “Send”
-    alert('You have submitted the form.')
+     e.preventDefault(); // prevents the page from reloading when you hit “Send”
+    
   
     emailjs.sendForm('service_euqd5la', 'template_0sktxli', form.current, 'iz74TaBnur3LUJi4X')
       .then((result) => {
-          // show the user a success message
+        alert('You have submitted the form.')
+        setFirstName('');
+        setLastName('');
+        setBoardposition('');
+        setStreetaddress('');
+        setLinetwo('');
+        setCity('');
+        setPostalcode('');
+        setPhone('');
+        setEmail('');
+        setCondocorp('');
+        setBuildingstructure('');
+        setBuildingtype('');
+        setUnits('');
+        setBuildingaddress('');
+        setBuildingline('');
+        setBuildingcity('');
+        setBuildingcode('');
+
       }, (error) => {
-          // show the user an error
+        alert('There has been an Error. Try again')
       });
+      
+
+      // 👇️ clear all input values in the form
+  
+
   };
   return (
     <Outer>
@@ -29,30 +69,30 @@ const EmailContactForm = () => {
     <Form ref={form} onSubmit={sendEmail}>
     <Label>Name</Label>
       <Name>
-      <Input type="text" name="from_name" placeholder="First" required/>
-      <Input type="text" name="from_last" placeholder="Last" required/>
+      <Input type="text" name="from_name" onChange={event => setFirstName(event.target.value)} value={firstName} placeholder="First" required/>
+      <Input type="text" name="from_last" onChange={event => setLastName(event.target.value)} value={lastName} placeholder="Last" required/>
       </Name>
       <Label>Board Position</Label>
-      <Input type="text" name="board_position" required/>
+      <Input type="text" name="board_position" onChange={event => setBoardposition(event.target.value)} value={boardposition} required/>
       <Label>Address</Label>
-      <Input type="text" name="from_address" placeholder="Street Address" required/>
-      <Input type="text" name="from_addresstwo" placeholder="Address Line 2" required/>
+      <Input type="text" name="from_address" onChange={event => setStreetaddress(event.target.value)} value={streetaddress} placeholder="Street Address" required/>
+      <Input type="text" name="from_addresstwo" onChange={event => setLinetwo(event.target.value)} value={linetwo} placeholder="Address Line 2" required/>
       <Address>
-      <Input type="text" name="from_city" placeholder="City" required/>
-      <Input type="text" name="from_postal" placeholder="Postal Code" required/>
+      <Input type="text" name="from_city" onChange={event => setCity(event.target.value)} value={city} placeholder="City" required/>
+      <Input type="text" name="postal_code" onChange={event => setPostalcode(event.target.value)} value={postalcode} placeholder="Postal Code" required/>
       </Address>
       <Label>Phone</Label>
-      <Input type="tel" name="from_phone" required/>
+      <Input type="tel" name="from_phone" onChange={event => setPhone(event.target.value)} value={phone} required/>
       <Label>Email</Label>
-      <Input type="email" name="from_email" required />
+      <Input type="email" name="from_email" onChange={event => setEmail(event.target.value)} value={email} required />
       <Subtitle>
         Property Information
         <Divider />
       </Subtitle>
       <Label>Condominuim Corporation</Label>
-      <Input type="text" name="condo_corp" required/>
+      <Input type="text" name="condo_corp" onChange={event => setCondocorp(event.target.value)} value={condocorp} required/>
       <Label>Building Structure</Label>
-      <Select name="building_structure" required>
+      <Select name="building_structure" onChange={event => setBuildingstructure(event.target.value)} value={buildingstructure} required>
         <option disabled selected value="" >-- select an option --</option>
         <option name="building_structure">Lowrise</option>
         <option name="building_structure">Townhouse</option>
@@ -60,24 +100,24 @@ const EmailContactForm = () => {
         <option name="building_structure">Shared Facility</option>
       </Select>
       <Label>Building Type</Label>
-      <Select name="building_type" required>
+      <Select name="building_type" onChange={event => setBuildingtype(event.target.value)} value={buildingtype} required>
       <option disabled selected value="">-- select an option --</option>
-        <option value="building_type">Residential</option>
-        <option value="building_type">Commercial</option>
-        <option value="building_type">Mixed (both)</option>
+        <option name="building_type">Residential</option>
+        <option name="building_type">Commercial</option>
+        <option name="building_type">Mixed (both)</option>
         
  
  
 
       </Select>
       <Label>Number of Units</Label>
-      <Input type="number" name="number_units" required/>
+      <Input type="number" name="number_units" onChange={event => setUnits(event.target.value)} value={units} required/>
       <Label>Building Address (If different from contact address)</Label>
-      <Input type="text" name="building_address" placeholder="Street Address" />
-      <Input type="text" name="building_addresstwo" placeholder="Address Line 2"/>
+      <Input type="text" name="building_address" onChange={event => setBuildingaddress(event.target.value)} value={buildingaddress} placeholder="Street Address" />
+      <Input type="text" name="building_addresstwo" onChange={event => setBuildingline(event.target.value)} value={buildingline} placeholder="Address Line 2"/>
       <Address>
-      <Input type="text" name="building_city"placeholder="City"/>
-      <Input type="text" name="building_postal" placeholder="Postal Code"/>
+      <Input type="text" name="building_city" onChange={event => setBuildingcity(event.target.value)} value={buildingcity} placeholder="City"/>
+      <Input type="text" name="building_postal" onChange={event => setBuildingcode(event.target.value)} value={buildingcode} placeholder="Postal Code"/>
       </Address>
       <Submit type="submit" value="Submit" />
     </Form>
