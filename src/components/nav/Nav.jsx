@@ -115,7 +115,7 @@ function DrawerAppBar(props) {
                           </TexterMobile>
                           </ListItemButton>
                           <ListItemButton sx={{ textAlign: 'center' }}>
-                            <TexterMobile href='/contact'>
+                            <TexterMobile href='/contact#contact'>
                                 Contact
                                 
                               </TexterMobile>
@@ -200,12 +200,12 @@ const changeColor = () => {
                           <Texter href='https://app.vendorpm.com/signup' target="_blank">
                               Contractors
                           </Texter>
-                          
-                            <SpecialButton href='/contact#contact'>
+                          <Link className='contactlink' to="/contact">
+                            <SpecialButton to='/contact#contact'>
                                 Contact
                                 <ArrowForwardIcon fontSize="large"/>
                               </SpecialButton>
-                          
+                              </Link>
                       </TextsRight>
                     </TotalNav>
                 </Box>
@@ -303,6 +303,14 @@ const TextsRight = styled.div`
   text-align: center;
   
   height: fit-content;
+
+  .contactlink {
+    height: 45px;
+    display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 20px;
+  }
 `
 
 const Texter = styled.a`
