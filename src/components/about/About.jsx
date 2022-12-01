@@ -60,14 +60,12 @@ const Outer = styled.div`
     justify-content: center;
    padding-left: 6.5vw;
    padding-right: 6.5vw;
-   
    margin-bottom: 15vh;
     gap: 30px;
 `
 const Anchor = styled.a`
      display: block;
     position: relative;
-    top: -127px;
     visibility: hidden;
 `
 
@@ -79,6 +77,7 @@ const Left = styled.div`
 `
 const Right = styled.img`
    height: 70vh;
+   margin-top: 150px;
    @media only screen and (max-width: 1290px) {
     display: none;
   }
