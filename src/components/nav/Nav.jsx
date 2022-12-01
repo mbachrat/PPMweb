@@ -201,7 +201,7 @@ const changeColor = () => {
                               Contractors
                           </Texter>
                           
-                            <SpecialButton href='/contact'>
+                            <SpecialButton href='/contact#contact'>
                                 Contact
                                 <ArrowForwardIcon fontSize="large"/>
                               </SpecialButton>
