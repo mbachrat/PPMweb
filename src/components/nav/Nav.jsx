@@ -136,19 +136,35 @@ function DrawerAppBar(props) {
       <AppBar style={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
         <div sx={{ display: 'flex' }}>
           <Outer className={color ? "filled" : "empty"}>
-            <Toolbar>
+            <Toolbar
+              sx={{
+                width: '100%',
+                justifyContent: { xs: 'flex-start', sm: 'center' },
+                pl: { xs: '10px', sm: 0 },
+                pr: { xs: 1, sm: 0 },
+              }}
+            >
               <IconButton
                 color='inherit'
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
                 
-                sx={{ mr: 2, display: { sm: 'none' } }}
+                sx={{
+                  mr: 2,
+                  display: { sm: 'none' },
+                  '& .MuiSvgIcon-root': { fontSize: '3rem' },
+                }}
               >
                 <MenuIcon fontSize="large"/>
               </IconButton>
-              
-              <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+              <Box
+                sx={{
+                  display: { xs: 'none', sm: 'flex' },
+                  justifyContent: 'center',
+                  width: '100%',
+                }}
+              >
                 <TotalNav>
                   <TextsLeft>
                    {/*<Texter href='https://app.condocontrol.com/registration' target="_blank">
