@@ -1,45 +1,41 @@
-import GlobalStyles from './styles/GlobalStyles';
-import { ThemeProvider } from 'styled-components';
-import {Route, Routes} from "react-router-dom"
-import { lightTheme } from './styles/theme.jsx';
+import React, { Suspense, lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import React from 'react';
-import DrawerAppBar from './components/nav/Nav';
-import Hero from './components/hero/Hero';
-import About from './components/about/About';
-import Services from './components/services/Services';
-import Communities from './components/communities/Communities';
-import Footer from './components/footer/Footer';
-import Contact from './components/contact/Contact';
-import HeroContact from './components/contact/HeroContact';
-import EmailContactForm from './components/form/Form';
+import BaseLayout from './layouts/BaseLayout';
 
+const HomePage = lazy(() => import('./pages/HomePage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
 
 function App() {
   return (
-    <Routes>
-      <Route path='/contact' element = {<ThemeProvider theme={lightTheme}>
-        <GlobalStyles />
-        <DrawerAppBar />
-        <HeroContact />
-        <Contact />
-        <EmailContactForm />
-        <Footer />
-      </ThemeProvider>}/>
+    <Suspense
+      fallback={
+        <div className='app-loading' role='status' aria-live='polite'>
+          <span className='app-loading__spinner' />
+        </div>
+      }
+    >
+      <Routes>
+        <Route
+          path='/contact'
+          element={
+            <BaseLayout>
+              <ContactPage />
+            </BaseLayout>
+          }
+        />
 
-      <Route path='/' element = {<ThemeProvider theme={lightTheme}>
-          <GlobalStyles />
-          <DrawerAppBar />
-          <Hero />
-          <About />    
-          <Services />
-          <Communities />
-          <Footer /> 
-      </ThemeProvider>}/>
-    
-  </Routes>
-);
+        <Route
+          path='/'
+          element={
+            <BaseLayout>
+              <HomePage />
+            </BaseLayout>
+          }
+        />
+      </Routes>
+    </Suspense>
+  );
 }
 
 export default App;
-

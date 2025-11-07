@@ -1,73 +1,86 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-function Card({
-    title,
-    body,
-    src,
-  }) {
+function Card({ title, body, src, items = [] }) {
   return (
     <Outer>
-        <TextBox>
-            <Title>
-                {title}
-            </Title>
-            <Body>
-                {body}
-            </Body>
-        </TextBox>
-         <Logo>
-            <Inside src={src} />
-        </Logo>
+      <Logo>
+        <Inside src={src} alt={`${title} icon`} />
+      </Logo>
+      <Title>{title}</Title>
+      <Body>{body}</Body>
+      {items.length > 0 && (
+        <List>
+          {items.map((item) => (
+            <ListItem key={item}>{item}</ListItem>
+          ))}
+        </List>
+      )}
     </Outer>
-   
-  )
+  );
 }
 
-export default Card
+export default Card;
 
 const Outer = styled.div`
-    height: 255px;
+  background-color: ${({ theme }) => theme.main.card};
+  border-radius: 20px;
+  padding: 32px;
+  border: 1px solid ${({ theme }) => theme.main.border};
+  box-shadow: ${({ theme }) => theme.main.shadow};
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 320px;
+`;
 
-    
-`
-const TextBox = styled.div`
-    background-color: ${({ theme }) => theme.main.fonts.four};
-    border-radius: 7px;
-    width: 250px;
-    height: 250px;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-    
-`
-const Title = styled.h1`
-    color: ${({ theme }) => theme.main.fonts.secondary};
-    font-family: ${({ theme }) => theme.main.fontFamily.bold};
-    padding: 10px;
-    font-size: 22px;
-    padding-top: 30px;
-`
+const Title = styled.h3`
+  color: ${({ theme }) => theme.main.fonts.primary};
+  font-size: 2rem;
+`;
+
 const Body = styled.p`
-    color: ${({ theme }) => theme.main.fonts.primary};
-    font-family: ${({ theme }) => theme.main.fontFamily.primary};
-    padding: 10px;
-    
-`
-const Logo = styled.div`
-    display: flex;
-    justify-content: center ;
-    align-items: center;
-    background-color:${({ theme }) => theme.main.fonts.third}; 
-    border-radius: 100px;
-    height: 55px;
-    width: 55px;
-    position: relative;
-    top: -285px;
-    left: 5px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  color: ${({ theme }) => theme.main.fonts.secondary};
+`;
 
-`
+const Logo = styled.div`
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  width: 56px;
+  height: 56px;
+`;
+
 const Inside = styled.img`
-    height: 35px;
-    width: 45px;
-    
-`
+  height: 32px;
+  width: 32px;
+  filter: invert(0.05) brightness(1.2);
+`;
+
+const List = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 0;
+`;
+
+const ListItem = styled.li`
+  position: relative;
+  padding-left: 20px;
+  color: ${({ theme }) => theme.main.fonts.secondary};
+  font-size: 1.5rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: ${({ theme }) => theme.main.success};
+  }
+`;

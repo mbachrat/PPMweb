@@ -1,9 +1,8 @@
-import React, {useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { HashLink as Link } from 'react-router-hash-link';
 import styled from 'styled-components'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
@@ -12,7 +11,6 @@ import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import logo from '../../assets/img/ppmlogo.png'
@@ -50,19 +48,19 @@ function HideOnScroll(props) {
 const drawerWidth = 240;
 
 function DrawerAppBar(props) {
-
-
-
-
-
-  
-  const { window } = props;
+  const { window: windowProp } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [color, setColor] = useState(false);
 
+  useEffect(() => {
+    const target = windowProp ? windowProp() : (typeof window !== 'undefined' ? window : undefined);
+    if (!target) return undefined;
 
-  
-
-
+    const handleScroll = () => setColor(target.scrollY > 24);
+    handleScroll();
+    target.addEventListener('scroll', handleScroll);
+    return () => target.removeEventListener('scroll', handleScroll);
+  }, [windowProp]);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -79,48 +77,47 @@ function DrawerAppBar(props) {
           <ListItem disablePadding>
            
               <ButtonDrawer>
-              <ListItemButton sx={{ textAlign: 'center' }}>
-            <TexterMobile href='https://app.condocontrol.com/registration' target="_blank">
-                              Resident<br/> Registration
-                        </TexterMobile>
-                        </ListItemButton>
-                        <ListItemButton sx={{ textAlign: 'center' }}>
-                        <TexterMobile href='https://app.condocontrol.com/login' target="_blank">
-                              Resident<br/> Login
-                        </TexterMobile>
-                        </ListItemButton>
-                        <ListItemButton sx={{ textAlign: 'center' }}>
-                        <Link to="/#Community" style={{padding: 10}}> 
-                            Communities
-                        </Link>
-                        </ListItemButton>
-                        <ListItemButton sx={{ textAlign: 'center' }}>
-                        <Link to="/#About" style={{padding: 10}}> 
-                            About
-                        </Link>
-                        </ListItemButton>
-                        <ListItemButton sx={{ textAlign: 'center' }}>
-                          <TexterMobile href='https://app.condocontrol.com/status-certificates/begin-order' target="_blank">
-                                Status<br/> Certificate
-                          </TexterMobile>
-                          </ListItemButton>
-                          <ListItemButton sx={{ textAlign: 'center' }}>
-                          <TexterMobile href='https://app.condocontrol.com/login?NextPage=%2fservicerequest%2fadd-new-service-request' target="_blank">
-                                Service<br/> Request
-                          </TexterMobile>
-                          </ListItemButton>
-                          <ListItemButton sx={{ textAlign: 'center' }}>
-                          <TexterMobile href='https://app.vendorpm.com/signup' target="_blank">
-                              Contractors
-                          </TexterMobile>
-                          </ListItemButton>
-                          <ListItemButton sx={{ textAlign: 'center' }}>
-                            <TexterMobile href='/contact#contact'>
-                                Contact
-                                
-                              </TexterMobile>
-                              </ListItemButton>
-                              </ButtonDrawer>
+                <ListItemButton sx={{ textAlign: 'center' }}>
+                  <TexterMobile href='https://app.condocontrol.com/registration' target="_blank">
+                    Resident Registration
+                  </TexterMobile>
+                </ListItemButton>
+                <ListItemButton sx={{ textAlign: 'center' }}>
+                  <TexterMobile href='https://app.condocontrol.com/login' target="_blank">
+                    Resident Login
+                  </TexterMobile>
+                </ListItemButton>
+                <ListItemButton sx={{ textAlign: 'center' }}>
+                  <TexterMobile as={Link} to="/#Community">
+                    Communities
+                  </TexterMobile>
+                </ListItemButton>
+                <ListItemButton sx={{ textAlign: 'center' }}>
+                  <TexterMobile as={Link} to="/#About">
+                    About
+                  </TexterMobile>
+                </ListItemButton>
+                <ListItemButton sx={{ textAlign: 'center' }}>
+                  <TexterMobile href='https://app.condocontrol.com/status-certificates/begin-order' target="_blank">
+                    Status Certificate
+                  </TexterMobile>
+                </ListItemButton>
+                <ListItemButton sx={{ textAlign: 'center' }}>
+                  <TexterMobile href='https://app.condocontrol.com/login?NextPage=%2fservicerequest%2fadd-new-service-request' target="_blank">
+                    Service Request
+                  </TexterMobile>
+                </ListItemButton>
+                <ListItemButton sx={{ textAlign: 'center' }}>
+                  <TexterMobile href='https://app.vendorpm.com/signup' target="_blank">
+                    Contractors
+                  </TexterMobile>
+                </ListItemButton>
+                <ListItemButton sx={{ textAlign: 'center' }}>
+                  <TexterMobile as={Link} to='/contact#contact'>
+                    Contact
+                  </TexterMobile>
+                </ListItemButton>
+              </ButtonDrawer>
             
           </ListItem>
       
@@ -128,23 +125,7 @@ function DrawerAppBar(props) {
     </Box>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
-
-  //Colour
-
-
-const [color, setColor] = useState(false);
-
-const changeColor = () => {
-    if (window.scroll >=90) {
-      setColor(true)
-    } else {
-      setColor(false)
-    }
-}
-
-
-// window.addEventListener("scroll", changeColor)
+  const container = windowProp !== undefined ? () => windowProp().document.body : undefined;
 
 
   return (
@@ -152,9 +133,9 @@ const changeColor = () => {
     <CssBaseline  />
     <HideOnScroll {...props}>
       
-      <AppBar style={{backgroundColor: 'transparent'}}>
+      <AppBar style={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
         <div sx={{ display: 'flex' }}>
-          <Outer className={color ? "empty" : "filled"}>
+          <Outer className={color ? "filled" : "empty"}>
             <Toolbar>
               <IconButton
                 color='inherit'
@@ -170,42 +151,36 @@ const changeColor = () => {
               <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                 <TotalNav>
                   <TextsLeft>
-                        <Texter href='https://app.condocontrol.com/registration' target="_blank">
-                              Resident<br/> Registration
-                        </Texter>
-                        <Texter href='https://app.condocontrol.com/login' target="_blank">
-                              Resident<br/> Login
-                        </Texter>
-                        <Link to="/#Community" style={{marginTop: 5}}>
-                        <Texter >
-                            Communities
-                        </Texter>
-                        </Link>
-                        <Link to="/#About" style={{marginTop: 5}}>
-                        <Texter >
-                            About
-                        </Texter>
-                        </Link>
-                      </TextsLeft>
+                   {/*<Texter href='https://app.condocontrol.com/registration' target="_blank">
+                      Resident Registration
+                    </Texter>*/}
+                    <Texter href='https://app.condocontrol.com/login' target="_blank">
+                      Resident Login
+                    </Texter>
+                    <Texter as={Link} to="/#Service">
+                      Services
+                    </Texter>
+                    <Texter as={Link} to="/#About">
+                      About
+                    </Texter>
+                  </TextsLeft>
                       <Home href="/">
                       <Logo src={logo} />
                       </Home>
                       <TextsRight>
-                          <Texter href='https://app.condocontrol.com/status-certificates/begin-order' target="_blank">
-                                Status<br/> Certificate
-                          </Texter>
-                          <Texter href='https://app.condocontrol.com/login?NextPage=%2fservicerequest%2fadd-new-service-request' target="_blank">
-                                Service<br/> Request
-                          </Texter>
-                          <Texter href='https://app.vendorpm.com/signup' target="_blank">
-                              Contractors
-                          </Texter>
-                          <Link className='contactlink' to="/contact">
-                            <SpecialButton to='/contact#contact'>
-                                Contact
-                                <ArrowForwardIcon fontSize="large"/>
-                              </SpecialButton>
-                              </Link>
+                        <Texter href='https://app.condocontrol.com/status-certificates/begin-order' target="_blank">
+                          Status Certificate
+                        </Texter>
+                        {/*<Texter href='https://app.condocontrol.com/login?NextPage=%2fservicerequest%2fadd-new-service-request' target="_blank">
+                          Service Request
+                        </Texter>*/}
+                        {/*<Texter href='https://app.vendorpm.com/signup' target="_blank">
+                          Contractors
+                        </Texter>*/}
+                        <SpecialButton as={Link} className='contactlink' to='/contact#contact'>
+                          Request a Proposal
+                          <ArrowForwardIcon fontSize="medium" />
+                        </SpecialButton>
                       </TextsRight>
                     </TotalNav>
                 </Box>
@@ -222,7 +197,12 @@ const changeColor = () => {
               }}
               sx={{
                 display: { xs: 'block', sm: 'none' },
-                '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                '& .MuiDrawer-paper': {
+                  boxSizing: 'border-box',
+                  width: drawerWidth,
+                  backgroundColor: '#151a21',
+                  color: '#F5F7FB',
+                },
               }}
             >
               {drawer}
@@ -242,33 +222,27 @@ export default DrawerAppBar;
 
 
 const Outer = styled.div`
-  
   display: flex;
-  height: 100px;
   justify-content: center;
+  width: 100%;
+  padding: 12px 0;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  border-bottom: 1px solid transparent;
+  backdrop-filter: blur(22px);
 
   &.filled {
-    background-color: #ffffffce;
-    backdrop-filter: blur(7px);
+    background-color: rgba(15, 19, 26, 0.95);
+    border-color: ${({ theme }) => theme.nav.border};
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
   }
 
   &.empty {
-    background-color: none;
-  }
-  
-
-  @media only screen and (max-width: 960px) {
-    height: 200px;
-    justify-content:start;
-  }
-  
-  @media only screen and (max-width: 599px) {
-    height: 60px;
-    justify-content:start;
+    background-color: rgba(11, 13, 18, 0.12);
   }
 
-  
-  
+  @media (max-width: 960px) {
+    padding: 6px 0;
+  }
 `
 
 
@@ -277,95 +251,104 @@ const TotalNav = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 87vw;
+  width: min(1200px, 92vw);
 
   @media only screen and (max-width: 960px) {
     flex-direction: column;
+    gap: 12px;
   }
-
 `
 const TextsLeft = styled.div`
   display: flex;
-  justify-content: space-between;
- width: 100%;
- text-align: center;
-
+  justify-content: flex-start;
+  gap: 12px;
+  flex: 1;
+  text-align: center;
+  align-items: center;
+  flex-wrap: wrap;
 `
 
 const Home = styled.a`
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 const TextsRight = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: flex-end;
+  flex: 1;
   text-align: center;
-  
+  gap: 12px;
   height: fit-content;
+  align-items: center;
+  flex-wrap: wrap;
 
   .contactlink {
-    height: 45px;
+    height: 48px;
     display: flex;
-justify-content: center;
-align-items: center;
-margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
   }
 `
 
 const Texter = styled.a`
-color: ${({ theme }) => theme.nav.fonts.high};
-font-family: ${({ theme }) => theme.main.fontFamily.primary};
-/* font-weight: 600; */
-padding: 20px;
-display: flex;
-cursor: pointer;
-display: flex;
-justify-content: center;
-align-items: center;
+  color: ${({ theme }) => theme.nav.fonts.high};
+  font-family: ${({ theme }) => theme.main.fontFamily.med};
+  padding: 10px 14px;
+  display: inline-flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
 
-     
-     
-     transition: color 0.3s;
-    &:hover {
-        color: ${({ theme }) => theme.nav.fonts.primary};
-        /* text-shadow: 0 0 5px ${({ theme }) => theme.nav.fonts.hover}; */
-        /* text-decoration: underline 2px; */
-    }
-
+  &:hover {
+    color: ${({ theme }) => theme.nav.fonts.primary};
+    border-color: ${({ theme }) => theme.nav.border};
+    background: rgba(255, 255, 255, 0.05);
+  }
 `
 
 
 const Logo = styled.img`
-height: 40px;
-padding-left: 20px;
-padding-right: 20px;
+  height: 44px;
+  width: auto;
+  flex:0 0 auto;
+  padding: 0 10px;
 
-@media only screen and (max-width: 1250px) {
-    display: none;
+  @media only screen and (max-width: 1250px) {
+    height: 36px;
   }
-
 `
 const SpecialButton = styled.a`
-display: flex;
-justify-content: center;
-align-items: center;
-gap: 6px;
-padding: 10px;
-padding-top: 12px;
-border-radius: 7px;
-background-color: ${({ theme }) => theme.main.fonts.third};
-color: ${({ theme }) => theme.nav.background};
-height: 45px;
-margin-top: 30px;
-margin-bottom: 30px;
-cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 0 26px;
+  border-radius: 999px;
+  background-color: ${({ theme }) => theme.main.highlight};
+  color: #0b0d12;
+  height: 48px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 
-transition: background-color 0.5s;
-    &:hover {
-        background-color: ${({ theme }) => theme.main.fonts.primary};
-        text-shadow: 0 0 10px ${({ theme }) => theme.nav.fonts.hover};
-    }
+  &:hover {
+    background-color: ${({ theme }) => theme.main.highlightSoft};
+    transform: translateY(-2px);
+  }
 `
 
 
@@ -376,10 +359,16 @@ const ButtonDrawer = styled.div`
   align-items: center;
 `
 const TexterMobile = styled.a`
-  padding: 10px;
+  padding: 12px;
+  color: ${({ theme }) => theme.nav.fonts.primary};
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
 
-
+  &:hover {
+    color: ${({ theme }) => theme.main.highlight};
+  }
 `
-
-
-

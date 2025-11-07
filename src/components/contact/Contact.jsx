@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import GoogleMapReact from 'google-map-react'
 import phone from '../../assets/symbols/phone.svg'
 import location from '../../assets/symbols/location.svg'
 import email from '../../assets/symbols/email.svg'

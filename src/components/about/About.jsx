@@ -1,124 +1,95 @@
-import React, { useEffect } from 'react'
-import styled from 'styled-components'
-import Card from '../extras/Card'
-import goal from "../../assets/symbols/goals.svg"
-import about from '../../assets/img/about.png'
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import Card from '../extras/Card';
+import goal from '../../assets/symbols/goals.svg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 function About() {
+  useEffect(() => {
+    AOS.init({ duration: 2000 });
+  }, []);
 
-  useEffect(()=>{
-
-    AOS.init({duration: 2000});
-
-
-  },[])
-
-
+  const problems = [
+    {
+      title: 'Stagnant Growth',
+      body: 'Boards juggle day-to-day fires and rarely get to focus on long-term planning.',
+      src: goal,
+      items: ['Limited insight into building health', 'Aging capital plans', 'Reactive budgeting'],
+    },
+    {
+      title: 'Team Inefficiency',
+      body: 'Disconnected stakeholders slow decisions and frustrate residents.',
+      src: goal,
+      items: ['Manual, error-prone workflows', 'Communication gaps', 'Accountability issues'],
+    },
+    {
+      title: 'Outdated Systems',
+      body: 'Legacy platforms make it hard to deliver the service level modern communities expect.',
+      src: goal,
+      items: ['Data locked in silos', 'Security vulnerabilities', 'No clear reporting'],
+    },
+  ];
 
   return (
-    <Outer data-aos="fade-up" data-aos-once="true">
-        <Anchor class="anchor" id="About"></Anchor>
-        <Left>
-            <Title >
-                About Us
-            </Title>
-            <Body>
-            Progress Property Management Ltd. is committed to providing total quality management to Condominium Corporations in Ontario. 
-            <br/> <br/> 
-            We strive to meet and exceed the demands of modern property management. By continually enhancing our knowledge base and seeking new ways to better serve our clients, Progress Property Management not only meets our clients’ property management needs, we exceed their expectations.
-            </Body>
-            <Cards data-aos="fade-up" data-aos-once="true" data-aos-delay="50">
-            <Card
-                title="Our Goal"
-                body ="Our goals and objectives are to provide a more personalized degree of service to our customers, and a higher level of comfort and protection through the preservation of property value."
-                src={goal}
-            />
-            <Card
-                title="Our Goal"
-                body ="Our goals and objectives are to provide a more personalized degree of service to our customers, and a higher level of comfort and protection through the preservation of property value."
-                src={goal}
-            />
-            <Card
-                title="Our Goal"
-                body ="Our goals and objectives are to provide a more personalized degree of service to our customers, and a higher level of comfort and protection through the preservation of property value."
-                src={goal}
-            />
-
-            </Cards>
-        </Left>
-        <Right src={about} />
-    </Outer>
-  )
+    <Section data-aos='fade-up' data-aos-once='true'>
+      <Anchor id='About' />
+      <Intro>
+        <Eyebrow>Common Problems</Eyebrow>
+        <Title>We See Every Day.</Title>
+        <Body>
+          Most condo communities struggle with the same operational roadblocks that slow progress and hurt resident satisfaction. We pair modern strategies with attentive service to eliminate the noise.
+        </Body>
+      </Intro>
+      <Cards>
+        {problems.map((problem) => (
+          <Card key={problem.title} {...problem} />
+        ))}
+      </Cards>
+    </Section>
+  );
 }
 
-export default About
+export default About;
 
-const Outer = styled.div`
-    display: flex;
-    justify-content: center;
-   padding-left: 6.5vw;
-   padding-right: 6.5vw;
-   margin-bottom: 15vh;
-    gap: 30px;
-`
-const Anchor = styled.a`
-     display: block;
-    position: relative;
-    visibility: hidden;
-`
+const Section = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 0 6.5vw 10vh;
+`;
 
+const Anchor = styled.span`
+  position: relative;
+  top: -100px;
+`;
 
-const Left = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-`
-const Right = styled.img`
-   height: 70vh;
-   margin-top: 150px;
-   @media only screen and (max-width: 1290px) {
-    display: none;
-  }
+const Intro = styled.div`
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
 
-`
-const Title = styled.h1`
-    font-size: 70px;
-    font-family: ${({ theme }) => theme.main.fontFamily.bold};
-    background: -webkit-linear-gradient(45deg,#0699CD, #152E66);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 25px;
-  margin-top: 15vh;
+const Eyebrow = styled.span`
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 1.2rem;
+  color: ${({ theme }) => theme.main.fonts.muted};
+`;
 
-    @media only screen and (max-width: 960px) {
-        margin-bottom: 15px;
-        font-size: 50px;
-        margin-top: 8vh;
-  }
-`
+const Title = styled.h2`
+  font-size: clamp(3.2rem, 5vw, 5rem);
+  color: ${({ theme }) => theme.main.fonts.primary};
+`;
+
 const Body = styled.p`
-     font-family: ${({ theme }) => theme.main.fontFamily.light};
-     color: ${({ theme }) => theme.main.fonts.primary};
-    font-size: 24px;
-    margin-bottom: 80px;
+  font-size: 1.8rem;
+  color: ${({ theme }) => theme.main.fonts.secondary};
+`;
 
-    @media only screen and (max-width: 960px) {
-        margin-bottom: 80px;
-    
-  }
-`
 const Cards = styled.div`
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-   gap: 40px;
-
-    @media only screen and (max-width: 960px) {
-    flex-direction: column;
-    align-items: center;
-    margin-left: -20px;
-    
-  }
-`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+`;

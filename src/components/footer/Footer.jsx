@@ -1,187 +1,235 @@
-import { Divider } from '@mui/material';
-import React from 'react'
+import React from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
-import styled from 'styled-components'
-import logo from "../../assets/img/ppmlogo.png"
-import fb from "../../assets/symbols/logo-facebook-svgrepo-com.svg"
-
-
-
+import styled from 'styled-components';
+import logo from '../../assets/img/ppmlogo.png';
+import fb from '../../assets/symbols/logo-facebook-svgrepo-com.svg';
 
 function Footer() {
-
-    let residence = [
-        {name:"Resident Registration",link:"https://app.condocontrol.com/registration"},
-        {name:"Resident Login",link:"https://app.condocontrol.com/login"},
-        {name:"Resources", link:"https://www.condoauthorityontario.ca/resources/"},
-        
-        
-    ];
-    let residenceList = residence.map(residence => <a className='Test' style={{color: "#f6f6f6", fontSize: "14px"}} href ={residence.link} target="blank">{residence.name}</a>)
-
-    let content = [
-        {name:"Status Certificate",link:"https://app.condocontrol.com/status-certificates/begin-order"},
-        {name:"Service Request",link:"https://app.condocontrol.com/login?NextPage=%2fservicerequest%2fadd-new-service-request"},
-        {name:"Contractors", link:"https://app.vendorpm.com/signup"},
-        
-    ];
-    let contentList = content.map(content => <a className='Test' style={{color: "#f6f6f6", fontSize: "14px"}} href ={content.link}>{content.name}</a>)
-
-    let company = [
-        {name:"About",link:"/#About"},
-        {name:"Community", link:"/#Community"},
-        {name:"Contact",link:"/contact#contact"},
-        {name:"Request for Proposal", link:"/contact#form"},
-        
-    ];
-    let companyList = company.map(company => <Link className='Test' style={{color: "#f6f6f6", fontSize: "14px"}} to ={company.link}>{company.name}</Link>)
-
-
+  const navColumns = [
+    {
+      title: 'Residents',
+      items: [
+        { label: 'Resident Registration', href: 'https://app.condocontrol.com/registration', external: true },
+        { label: 'Resident Login', href: 'https://app.condocontrol.com/login', external: true },
+        { label: 'Resources', href: 'https://www.condoauthorityontario.ca/resources/', external: true },
+      ],
+    },
+    {
+      title: 'Services',
+      items: [
+        { label: 'Status Certificate', href: 'https://app.condocontrol.com/status-certificates/begin-order', external: true },
+        { label: 'Service Request', href: 'https://app.condocontrol.com/login?NextPage=%2fservicerequest%2fadd-new-service-request', external: true },
+        { label: 'Contractors', href: 'https://app.vendorpm.com/signup', external: true },
+      ],
+    },
+    {
+      title: 'Company',
+      items: [
+        { label: 'About', href: '/#About' },
+        { label: 'Community', href: '/#Community' },
+        { label: 'Contact', href: '/contact#contact' },
+        { label: 'Request for Proposal', href: '/contact#form' },
+      ],
+    },
+  ];
 
   return (
     <Outer>
-        <Top>
-            <Logo>
-                <Image src={logo} width={250}/>
-                <Address>
-                392 John Street Burlington, ON  L7R 2K4
-                </Address>
-                <Email>
-                info@progresspm.ca
-                </Email>
-            </Logo>
-            <TotalText>
-                <Residence>
-                    <Title>
-                        RESIDENCE
-                    </Title>
-                    <Links >
-                        {residenceList}
-                    </Links>
-                </Residence>
-                <Residence>
-                    <Title>
-                        CONTENT
-                    </Title>
-                    <Links>
-                        {contentList}
-                    </Links>
-                </Residence>
-                <Residence>
-                    <Title>
-                        COMPANY
-                    </Title>
-                    <Links>
-                        {companyList}
-                    </Links>
-                </Residence>
-            </TotalText>
-        </Top>
-        <Divider  sx={{ bgcolor: "white", opacity: 0.1, margin: "10px" }}/>
-        <Bottom>
-            <Left>
-            Progress Property Managment Ltd 2022
-            </Left>
-            <Right href="https://www.facebook.com/Progresspm/">
-                <Socials src={fb} />
-            </Right>
-        </Bottom>
+      <Top>
+        <Brand>
+          <Image src={logo} width={220} alt='Progress Property Management logo' />
+          <BrandCopy>
+            Transforming condominium communities through attentive service, transparent communications, and proactive strategy.
+          </BrandCopy>
+          <ContactGrid>
+            <ContactLabel>Visit</ContactLabel>
+            <ContactValue>392 John Street, Burlington, ON L7R 2K4</ContactValue>
+            <ContactLabel>Email</ContactLabel>
+            <ContactValue>info@progresspm.ca</ContactValue>
+          </ContactGrid>
+          <CTAButton href='/contact#contact'>Schedule Free Consultation</CTAButton>
+        </Brand>
+
+        <Columns>
+          {navColumns.map(({ title, items }) => (
+            <Column key={title}>
+              <ColumnTitle>{title}</ColumnTitle>
+              <ColumnLinks>
+                {items.map(({ label, href, external }) =>
+                  external ? (
+                    <ColumnLink key={label} href={href} target='_blank' rel='noreferrer'>
+                      {label}
+                    </ColumnLink>
+                  ) : (
+                    <ColumnLink as={Link} key={label} to={href}>
+                      {label}
+                    </ColumnLink>
+                  )
+                )}
+              </ColumnLinks>
+            </Column>
+          ))}
+        </Columns>
+      </Top>
+      <Divider />
+      <Bottom>
+        <Left>© {new Date().getFullYear()} Progress Property Management Ltd. All rights reserved.</Left>
+        <SocialLink href='https://www.facebook.com/Progresspm/' target='_blank' rel='noreferrer'>
+          <Socials src={fb} alt='Facebook' />
+        </SocialLink>
+      </Bottom>
     </Outer>
-  )
+  );
 }
 
-export default Footer
+export default Footer;
 
-const Outer = styled.div`
- background: #0d0d0d;
-    padding-left: 6.5vw;
-   padding-right: 6.5vw;
-`
+const Outer = styled.footer`
+  background: ${({ theme }) => theme.main.surface};
+  padding: 80px 6.5vw 40px;
+`;
+
 const Top = styled.div`
-    display: flex;
-    padding-top: 70px;
+  display: flex;
+  gap: 64px;
+  align-items: flex-start;
 
-    @media only screen and (max-width: 960px) {
-        flex-direction: column;
-    }
-`
-const Logo = styled.div`
-    flex: 2.5;
-`
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
+`;
+
+const Brand = styled.div`
+  flex: 1.25;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
+
 const Image = styled.img`
-    filter: invert(1) brightness(100);
-   
-`
-const Address = styled.div`
-    font-family: ${({ theme }) => theme.main.fontFamily.light};
-     color: white;
-    font-size: 12px;
-    padding-top: 5px;
-`
+  filter: brightness(100); /* keep full-color while sitting on dark */
+`;
 
-const TotalText = styled.div`
-    flex: 2.5;
-    display: flex;
-    justify-content: space-between;
-    @media only screen and (max-width: 960px) {
-        flex-direction: column;
-        
-    }
-`
+const BrandCopy = styled.p`
+  color: ${({ theme }) => theme.main.fonts.secondary};
+  max-width: 380px;
+`;
 
-const Residence = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-top: 30px;
-   padding-bottom: 100px ;
-   @media only screen and (max-width: 960px) {
-        padding-bottom: 30px;
-        border-bottom: solid grey 1px;
-    }
-    
-`
-const Title = styled.div`
-     font-family: ${({ theme }) => theme.main.fontFamily.bold};
-     color: white;
-    font-size: 14px;
-    padding-bottom: 30px;
-`
-const Links = styled.div`
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 25px;
+const ContactGrid = styled.div`
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 8px 32px;
+`;
 
-    .Test:hover{
-        
-        text-decoration: underline;
-    }
-   
-    
-`
+const ContactLabel = styled.span`
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  color: ${({ theme }) => theme.main.fonts.muted};
+`;
+
+const ContactValue = styled.span`
+  color: ${({ theme }) => theme.main.fonts.primary};
+`;
+
+const CTAButton = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 14px 20px;
+  background: ${({ theme }) => theme.main.highlight};
+  color: #0b0d12;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    background: ${({ theme }) => theme.main.highlightSoft};
+    transform: translateY(-2px);
+  }
+`;
+
+const Columns = styled.div`
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 32px;
+`;
+
+const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+`;
+
+const ColumnTitle = styled.h4`
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.main.fonts.secondary};
+  letter-spacing: 0.2em;
+`;
+
+const ColumnLinks = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
+
+const ColumnLink = styled.a`
+  color: ${({ theme }) => theme.main.fonts.primary};
+  font-size: 1.4rem;
+  opacity: 0.85;
+  transition: color 0.2s ease, opacity 0.2s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.main.highlight};
+    opacity: 1;
+  }
+`;
+
+const Divider = styled.div`
+  height: 1px;
+  width: 100%;
+  background: ${({ theme }) => theme.main.border};
+  margin: 48px 0 24px;
+`;
+
 const Bottom = styled.div`
-    display: flex;
-    justify-content: space-between;
-`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+`;
+
 const Left = styled.p`
-    padding-top: 20px;
-    padding-bottom: 20px;
-    font-family: ${({ theme }) => theme.main.fontFamily.light};
-     color: #bbbbbb;
-    font-size: 10px;
-`
-const Right = styled.a`
-    
-`
+  color: ${({ theme }) => theme.main.fonts.muted};
+  font-size: 1.2rem;
+`;
+
+const SocialLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: ${({ theme }) => theme.main.card};
+  border: 1px solid ${({ theme }) => theme.main.border};
+  transition: background 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    background: ${({ theme }) => theme.main.highlight};
+    transform: translateY(-2px);
+  }
+`;
+
 const Socials = styled.img`
-    filter: invert(1);
-`
-const Email = styled.div`
-padding-top: 3px;
-     font-family: ${({ theme }) => theme.main.fontFamily.light};
-     color: white;
-    font-size: 12px;
-`
+  width: 18px;
+  filter: invert(1);
+`;
 

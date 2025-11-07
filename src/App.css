@@ -1,0 +1,36 @@
+
+.app-loading {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.app-loading__spinner {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 6px solid rgba(0, 86, 179, 0.25);
+  border-top-color: #0d6efd;
+  animation: app-loading-spin 0.9s linear infinite,
+    app-loading-blue 2s ease-in-out infinite;
+}
+
+@keyframes app-loading-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes app-loading-blue {
+  0% {
+    border-top-color: #63a4ff;
+  }
+  50% {
+    border-top-color: #0d6efd;
+  }
+  100% {
+    border-top-color: #63a4ff;
+  }
+}
