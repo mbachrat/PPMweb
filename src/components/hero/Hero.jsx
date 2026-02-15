@@ -10,8 +10,8 @@ function Hero() {
   }, []);
 
   const stats = [
-    { label: 'Condo Partners', value: '65+' },
-    { label: 'Resident Satisfaction', value: '98%' },
+    { label: 'Years of Experience', value: '25+' },
+    { label: 'Owned and Operated in Canada', value: '100% Canadian' },
     { label: 'Support Coverage', value: '24/7/365' },
   ];
 
@@ -20,13 +20,13 @@ function Hero() {
       <HeroImage role='presentation' aria-hidden='true' />
       <Overlay />
       <HeroContent data-aos='fade-up'>
-        <Eyebrow>Trusted Property Management</Eyebrow>
-        <Headline>Growing Your Community Just Got A Whole Lot Easier.</Headline>
+        <Eyebrow>Progress Property Management Ltd.</Eyebrow>
+        <Headline>Forward-thinking management for modern communities</Headline>
         <Subcopy>
           Transform your condominium operations with proactive strategies, transparent communication, and a dedicated team built for modern living.
         </Subcopy>
         <HeroActions>
-          <PrimaryButton href='/contact#contact'>Start Now</PrimaryButton>
+          <PrimaryButton href='/contact#contact'>Request Proposal</PrimaryButton>
           <SecondaryButton href='/contact#form'>Explore Services</SecondaryButton>
         </HeroActions>
         <HeroStats>

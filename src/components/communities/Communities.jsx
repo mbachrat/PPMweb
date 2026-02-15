@@ -44,12 +44,12 @@ function Communities() {
           </BulletList>
           <CTAButton href='/contact#contact'>Schedule Free Consultation</CTAButton>
         </SpotlightCopy>
-        <SpotlightMedia>
+        {/* <SpotlightMedia>
           <SpotlightImage src={map} alt='Progress PM operations dashboard' />
-        </SpotlightMedia>
+        </SpotlightMedia> */}
       </Spotlight>
 
-      <Process>
+      {/* <Process>
         <ProcessTitle>Our Proven Three-Step Solution</ProcessTitle>
         <ProcessGrid>
           {steps.map(({ step, title, body }) => (
@@ -60,9 +60,9 @@ function Communities() {
             </ProcessCard>
           ))}
         </ProcessGrid>
-      </Process>
+      </Process> */}
 
-      <CommunitiesTitle>Communities We Support</CommunitiesTitle>
+      {/* <CommunitiesTitle>Communities We Support</CommunitiesTitle>
       <Buildings>
         <CardTwo
           title='Waterview'
@@ -88,7 +88,7 @@ function Communities() {
           srcTwo={map}
           website='http://www.thepalacecondo.com'
         />
-      </Buildings>
+      </Buildings> */}
     </Section>
   );
 }
