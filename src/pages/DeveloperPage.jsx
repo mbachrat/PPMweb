@@ -136,13 +136,13 @@ const HeroSection = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px 6.5vw;
+  padding: 190px 6.5vw;
   background: linear-gradient(135deg, rgba(11, 13, 18, 0.98), rgba(21, 26, 33, 0.95));
   border-bottom: 1px solid ${({ theme }) => theme.nav.border};
 
   @media (max-width: 768px) {
     min-height: auto;
-    padding: 40px 6.5vw;
+    padding: 170px 6.5vw;
   }
 `;
 
