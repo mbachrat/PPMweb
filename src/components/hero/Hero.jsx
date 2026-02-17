@@ -51,6 +51,17 @@ const HeroSection = styled.section`
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding-top: 0;
+
+  @media (max-width: 768px) {
+    padding-top: 80px;
+    min-height: calc(100vh - 80px);
+  }
+
+  @media (max-width: 480px) {
+    padding-top: 60px;
+    min-height: calc(100vh - 60px);
+  }
 `;
 
 const HeroImage = styled.div`
