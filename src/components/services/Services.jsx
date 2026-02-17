@@ -103,13 +103,13 @@ function Services() {
           </ServiceCard>
         ))}
       </ServiceGrid>
-      <CTA data-aos='fade-up'>
+      {/* <CTA data-aos='fade-up'>
         <CTAContent>
           <CTAHeadline>Ready to get started?</CTAHeadline>
           <CTAText>Let’s build a roadmap that accelerates efficiency and elevates resident experiences.</CTAText>
         </CTAContent>
         <CTAButton href='/contact#contact'>Schedule Free Consultation</CTAButton>
-      </CTA>
+      </CTA> */}
     </Section>
   );
 }
@@ -119,10 +119,14 @@ export default Services;
 const Section = styled.section`
   background: radial-gradient(circle at top left, rgba(255, 157, 27, 0.14), transparent 45%),
     ${({ theme }) => theme.main.card};
-  padding: 100px 6.5vw;
+  padding: 190px 6.5vw 100px 6.5vw;
   display: flex;
   flex-direction: column;
   gap: 50px;
+
+  @media (max-width: 768px) {
+    padding: 180px 6.5vw 80px 6.5vw;
+  }
 `;
 
 const Header = styled.div`

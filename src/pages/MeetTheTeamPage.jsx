@@ -63,7 +63,7 @@ const MeetTheTeamPage = () => {
         </ImageContainer>
       </HeroSection>
 
-      <KeyPillarsSection>
+      {/* <KeyPillarsSection>
         <KeyPillarsTitle>Key Pillars</KeyPillarsTitle>
         <KeyPillarsSubtitle>
           We believe that the key pillars that support our vision, mission, and values.
@@ -77,7 +77,7 @@ const MeetTheTeamPage = () => {
             </PillarCard>
           ))}
         </PillarsGrid>
-      </KeyPillarsSection>
+      </KeyPillarsSection> */}
 
       {/* <TeamMembersSection>
         <SectionTitle>Meet the Team</SectionTitle>

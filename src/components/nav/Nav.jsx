@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { HashLink as Link } from 'react-router-hash-link';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -138,6 +139,7 @@ function DrawerAppBar(props) {
   const { window: windowProp } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [color, setColor] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const target = windowProp ? windowProp() : (typeof window !== 'undefined' ? window : undefined);
@@ -149,12 +151,22 @@ function DrawerAppBar(props) {
     return () => target.removeEventListener('scroll', handleScroll);
   }, [windowProp]);
 
+  useEffect(() => {
+    // Close drawer when location changes
+    setMobileOpen(false);
+  }, [location]);
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+    <Box onClick={(e) => {
+      // Only close drawer when clicking directly on the Box, not on children
+      if (e.target === e.currentTarget) {
+        handleDrawerToggle();
+      }
+    }} sx={{ textAlign: 'center' }}>
       <TexterMobile href='/'>
       <img style={{marginTop: 17}} src={logo} alt='logo' height={35}/>
       </TexterMobile>
@@ -174,8 +186,8 @@ function DrawerAppBar(props) {
                 <DropdownMenuMobile
                   label="Services"
                   items={[
-                    { label: "Condominium Management Services" },
-                    { label: "Developer Services" }
+                    { label: "Condominium Management Services", link: "/management" },
+                    { label: "Developer Services", link: "/developer" }
                   ]}
                 />
                 <DropdownMenuMobile
@@ -184,8 +196,8 @@ function DrawerAppBar(props) {
                     { label: "Resident login", href: 'https://app.condocontrol.com/login' },
                     { label: "Status Certificate", href: 'https://app.condocontrol.com/status-certificates/begin-order' },
                     { label: "Vendor Portal", href: 'https://app.vendorpm.com/signup' },
-                    { label: "CMRAO" },
-                    { label: "CAO" }
+                    { label: "CMRAO", href: 'https://www.cmrao.ca/'},
+                    { label: "CAO", href: 'https://www.condoauthorityontario.ca/' }
                   ]}
                 />
                 <ListItemButton sx={{ textAlign: 'center' }}>
@@ -256,8 +268,8 @@ function DrawerAppBar(props) {
                     <DropdownMenu
                       label="Services"
                       items={[
-                        { label: "Condominium Management Services" },
-                        { label: "Developer Services" }
+                        { label: "Condominium Management Services", link: "/management" },
+                        { label: "Developer Services", link: "/developer" }
                       ]}
                     />
                     <DropdownMenu
@@ -642,9 +654,16 @@ const MobileDropdownContent = styled.div`
   background-color: rgba(255, 255, 255, 0.05);
   border-top: 1px solid ${({ theme }) => theme.nav.border};
   border-bottom: 1px solid ${({ theme }) => theme.nav.border};
+  width: 100%;
+  box-sizing: border-box;
+
+  > div {
+    width: 100%;
+  }
 `
 
-const MobileDropdownItem = styled.div`
+const MobileDropdownItem = styled.a`
+  display: block;
   padding: 12px 20px;
   color: ${({ theme }) => theme.nav.fonts.high};
   font-size: 1.1rem;
@@ -653,11 +672,13 @@ const MobileDropdownItem = styled.div`
   cursor: pointer;
   transition: all 0.2s ease;
   text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  text-decoration: none;
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.1);
     color: ${({ theme }) => theme.main.highlight};
-    padding-left: 24px;
   }
 `
 
@@ -672,10 +693,11 @@ const MobileDropdownItemLink = styled(Link)`
   transition: all 0.2s ease;
   text-align: center;
   text-decoration: none;
+  width: 100%;
+  box-sizing: border-box;
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.1);
     color: ${({ theme }) => theme.main.highlight};
-    padding-left: 24px;
   }
 `

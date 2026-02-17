@@ -67,31 +67,31 @@ const EmailContactForm = () => {
         </Title>
     
     <Form ref={form} onSubmit={sendEmail}>
-    <Label>Name</Label>
+    <Label>Name*</Label>
       <Name>
       <Input type="text" name="from_name" onChange={event => setFirstName(event.target.value)} value={firstName} placeholder="First" required/>
       <Input type="text" name="from_last" onChange={event => setLastName(event.target.value)} value={lastName} placeholder="Last" required/>
       </Name>
       <Label>Board Position</Label>
-      <Input type="text" name="board_position" onChange={event => setBoardposition(event.target.value)} value={boardposition} required/>
-      <Label>Address</Label>
+      <Input type="text" name="board_position" onChange={event => setBoardposition(event.target.value)} value={boardposition}/>
+      <Label>Address*</Label>
       <Input type="text" name="from_address" onChange={event => setStreetaddress(event.target.value)} value={streetaddress} placeholder="Street Address" required/>
       <Input type="text" name="from_addresstwo" onChange={event => setLinetwo(event.target.value)} value={linetwo} placeholder="Address Line 2" required/>
       <Address>
       <Input type="text" name="from_city" onChange={event => setCity(event.target.value)} value={city} placeholder="City" required/>
       <Input type="text" name="postal_code" onChange={event => setPostalcode(event.target.value)} value={postalcode} placeholder="Postal Code" required/>
       </Address>
-      <Label>Phone</Label>
+      <Label>Phone*</Label>
       <Input type="tel" name="from_phone" onChange={event => setPhone(event.target.value)} value={phone} required/>
-      <Label>Email</Label>
+      <Label>Email*</Label>
       <Input type="email" name="from_email" onChange={event => setEmail(event.target.value)} value={email} required />
       <Subtitle>
         Property Information
         <Divider />
       </Subtitle>
       <Label>Condominuim Corporation</Label>
-      <Input type="text" name="condo_corp" onChange={event => setCondocorp(event.target.value)} value={condocorp} required/>
-      <Label>Building Structure</Label>
+      <Input type="text" name="condo_corp" onChange={event => setCondocorp(event.target.value)} value={condocorp}/>
+      <Label>Building Structure*</Label>
       <Select name="building_structure" onChange={event => setBuildingstructure(event.target.value)} value={buildingstructure} required>
         <option disabled selected value="" >-- select an option --</option>
         <option name="building_structure">Lowrise</option>
@@ -99,7 +99,7 @@ const EmailContactForm = () => {
         <option name="building_structure">Detached</option>
         <option name="building_structure">Shared Facility</option>
       </Select>
-      <Label>Building Type</Label>
+      <Label>Building Type*</Label>
       <Select name="building_type" onChange={event => setBuildingtype(event.target.value)} value={buildingtype} required>
       <option disabled selected value="">-- select an option --</option>
         <option name="building_type">Residential</option>
@@ -111,15 +111,15 @@ const EmailContactForm = () => {
 
       </Select>
       <Label>Number of Units</Label>
-      <Input type="number" name="number_units" onChange={event => setUnits(event.target.value)} value={units} required/>
-      <Label>Building Address (If different from contact address)</Label>
-      <Input type="text" name="building_address" onChange={event => setBuildingaddress(event.target.value)} value={buildingaddress} placeholder="Street Address" />
+      <Input type="number" name="number_units" onChange={event => setUnits(event.target.value)} value={units}/>
+      <Label>Building Address* (If different from contact address)</Label>
+      <Input type="text" name="building_address" onChange={event => setBuildingaddress(event.target.value)} value={buildingaddress} placeholder="Street Address"/>
       <Input type="text" name="building_addresstwo" onChange={event => setBuildingline(event.target.value)} value={buildingline} placeholder="Address Line 2"/>
       <Address>
       <Input type="text" name="building_city" onChange={event => setBuildingcity(event.target.value)} value={buildingcity} placeholder="City"/>
       <Input type="text" name="building_postal" onChange={event => setBuildingcode(event.target.value)} value={buildingcode} placeholder="Postal Code"/>
       </Address>
-      <Submit type="submit" value="Submit" />
+      <Submit type="submit">Submit</Submit>
     </Form>
     </Outer>
   );
@@ -128,102 +128,184 @@ const EmailContactForm = () => {
  export default EmailContactForm;
 
  const Outer = styled.div`
-  padding-left: 6.5vw;
-   padding-right: 6.5vw;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
- `
- const Label = styled.div`
-    font-size: 25px;
-    margin-bottom: -20px; 
- `
- const Form = styled.form`
+  padding: 80px 6.5vw;
   display: flex;
-  width: 50vw;
   flex-direction: column;
-  gap: 30px;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(11, 13, 18, 0.5), rgba(21, 26, 33, 0.8));
+  border-top: 1px solid ${({ theme }) => theme.nav.border};
+  border-bottom: 1px solid ${({ theme }) => theme.nav.border};
 
   @media only screen and (max-width: 960px) {
-     width: 100%;
-}
+    padding: 60px 6.5vw;
+  }
+`;
 
- `
+const Label = styled.label`
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: ${({ theme }) => theme.main.fonts.primary};
+  text-transform: uppercase;
+  margin-top: 8px;
+  display: block;
+`;
 
+const Form = styled.form`
+  display: flex;
+  width: min(600px, 90vw);
+  flex-direction: column;
+  gap: 24px;
 
- const Title = styled.h1`
- font-size: 50px;
- font-family: ${({ theme }) => theme.main.fontFamily.bold};
- background: -webkit-linear-gradient(45deg,#0699CD, #152E66);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-margin-bottom: 60px;
-margin-top: 60px;
+  @media only screen and (max-width: 960px) {
+    width: 100%;
+    gap: 20px;
+  }
+`;
 
- @media only screen and (max-width: 960px) {
-     margin-bottom: 50px;
-     font-size: 40px;
-}
-`
+const Title = styled.h1`
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-family: ${({ theme }) => theme.main.fontFamily.bold};
+  color: ${({ theme }) => theme.main.fonts.primary};
+  margin: 0 0 60px 0;
+  text-align: center;
+
+  @media only screen and (max-width: 960px) {
+    margin-bottom: 40px;
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+`;
 
 const Subtitle = styled.h2`
-  padding-top: 30px;
-  padding-bottom: 20px;
-  font-size: 40px;
-`
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: ${({ theme }) => theme.main.highlight};
+  padding: 40px 0 20px 0;
+  margin: 0;
+  border-top: 1px solid ${({ theme }) => theme.nav.border};
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+`;
+
 const Input = styled.input`
   width: 100%;
-  height: 40px;
-  border-radius: 5px;
-  background-color: #eeeeee;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid ${({ theme }) => theme.nav.border};
+  background-color: ${({ theme }) => theme.main.elevated};
+  color: ${({ theme }) => theme.main.fonts.primary};
+  font-family: ${({ theme }) => theme.main.fontFamily.med};
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: ${({ theme }) => theme.main.fonts.muted};
+  }
+
+  &:focus {
+    outline: none;
+    border-color: ${({ theme }) => theme.main.highlight};
+    background-color: rgba(245, 247, 251, 0.05);
+    box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.1);
+  }
 
   &:invalid:focus {
-      border: solid 2px red;
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
   }
-`
- 
-
+`;
 
 const Address = styled.div`
-  display: flex;
-  gap: 20px;
-`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
 const Name = styled.div`
-  display: flex;
-  gap: 20px;
-`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
 const Select = styled.select`
   width: 100%;
-  height: 40px;
-  border-radius: 5px;
-  background-color: #eeeeee;
-  border: none;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid ${({ theme }) => theme.nav.border};
+  background-color: ${({ theme }) => theme.main.elevated};
+  color: ${({ theme }) => theme.main.fonts.primary};
+  font-family: ${({ theme }) => theme.main.fontFamily.med};
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  box-sizing: border-box;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 20px;
+  padding-right: 40px;
+
+  &:focus {
+    outline: none;
+    border-color: ${({ theme }) => theme.main.highlight};
+    background-color: rgba(245, 247, 251, 0.05);
+    box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.1);
+  }
 
   &:invalid:focus {
-      border: solid 2px red;
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
   }
-`
-const Submit = styled.input`
+
+  option {
+    background-color: ${({ theme }) => theme.main.bg};
+    color: ${({ theme }) => theme.main.fonts.primary};
+  }
+`;
+
+const Submit = styled.button`
   width: 100%;
-  margin-top: 30px;
-  height: 50px;
-  border-radius: 5px;
-  font-size: 20px;
+  margin-top: 20px;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-align: center;
-  color: white;
-  background-color: ${({ theme }) => theme.main.fonts.third};
-  margin-bottom: 50px;
+  text-transform: uppercase;
+  color: #0b0d12;
+  background-color: ${({ theme }) => theme.main.highlight};
   border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: ${({ theme }) => theme.main.fontFamily.med};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.main.highlightSoft};
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 193, 7, 0.2);
+  }
 
   &:active {
-    background-color: ${({ theme }) => theme.main.fonts.primary};
+    transform: translateY(0);
   }
-`
+
+  @media only screen and (max-width: 960px) {
+    margin-top: 16px;
+    margin-bottom: 20px;
+  }
+`;
 
 const Seperate = styled.div`
-  border-top: solid 1px #b8b8b8;
-  width: 100%;
-
-`
-
-// type="submit" value="Submit"
+  display: none;
+`;

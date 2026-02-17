@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Card from '../extras/Card';
 import goal from '../../assets/symbols/goals.svg';
-import hammer from '../../assets/symbols/hammer-svgrepo-com.svg';
-import data from '../../assets/symbols/data.svg';
-import services from '../../assets/symbols/services.svg';
+import teamtwo from '../../assets/symbols/teamtwo.svg';
+import datatwo from '../../assets/symbols/datatwo.svg';
+import servicestwo from '../../assets/symbols/servicestwo.svg';
 import aboutBg from '../../assets/img/about.png';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -18,19 +18,19 @@ function About() {
     {
       title: 'Hands-on & personal',
       body: 'Faster Response times and a deeper understanding of your needs with direct access to dedicated managers.',
-      src: hammer,
+      src: teamtwo,
       items: ['On-site presence', 'Proactive oversight', 'Stronger relationships'],
     },
     {
       title: 'Tech-enabled Management',
       body: 'Less admin, fewer delays, and more transparency with a modern software platform built for condos.',
-      src: data,
+      src: datatwo,
       items: ['Smart platforms', 'Streamlined communication', 'Data-driven decisions'],
     },
     {
       title: 'Tailored Strategies',
       body: 'A management plan that reflects your community needs built around your building, residents, and goals.',
-      src: services,
+      src: servicestwo,
       items: ['Customized', 'Community-focused planning', 'Flexible approach'],
     },
   ];

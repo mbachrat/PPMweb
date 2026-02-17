@@ -6,6 +6,8 @@ import BaseLayout from './layouts/BaseLayout';
 const HomePage = lazy(() => import('./pages/HomePage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const MeetTheTeamPage = lazy(() => import('./pages/MeetTheTeamPage'));
+const DeveloperPage = lazy(() => import('./pages/DeveloperPage'));
+const ManagementPage = lazy(() => import('./pages/ManagementPage'));
 
 function App() {
   return (
@@ -31,6 +33,24 @@ function App() {
           element={
             <BaseLayout>
               <MeetTheTeamPage />
+            </BaseLayout>
+          }
+        />
+
+        <Route
+          path='/developer'
+          element={
+            <BaseLayout>
+              <DeveloperPage />
+            </BaseLayout>
+          }
+        />
+
+        <Route
+          path='/management'
+          element={
+            <BaseLayout>
+              <ManagementPage />
             </BaseLayout>
           }
         />
