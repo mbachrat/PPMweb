@@ -2,428 +2,160 @@ import React from 'react';
 import styled from 'styled-components';
 import propertyTeamImage from '../assets/img/propertyteam.jpg';
 
-const MeetTheTeamPage = () => {
-  const teamMembers = [
-    {
-      id: 1,
-      name: 'Team Member 1',
-      role: 'Position',
-      image: 'https://via.placeholder.com/300x300?text=Team+Member+1'
-    },
-    {
-      id: 2,
-      name: 'Team Member 2',
-      role: 'Position',
-      image: 'https://via.placeholder.com/300x300?text=Team+Member+2'
-    },
-    {
-      id: 3,
-      name: 'Team Member 3',
-      role: 'Position',
-      image: 'https://via.placeholder.com/300x300?text=Team+Member+3'
-    },
-    {
-      id: 4,
-      name: 'Team Member 4',
-      role: 'Position',
-      image: 'https://via.placeholder.com/300x300?text=Team+Member+4'
-    },
-  ];
+const teamCopy = [
+  'We are a local, family-run condominium management company - proudly Canadian owned and operated - serving the Golden Horseshoe region of Southern Ontario since 2004. From the beginning, our philosophy has been simple: strong communities are built through genuine relationships, thoughtful service, and managers who truly care.',
+  'We believe great condominium management is not about rushing through a corporate rat race. It is about slowing down enough to do things properly. Our clients feel seen, heard, and valued - because to us, every corporation matters.',
+  'Our property managers are actively engaged and present on site, with intentionally smaller portfolios that allow them to stay focused and fully invested in the communities they manage. This hands-on approach means better communication, quicker response times, and a deeper understanding of each property\'s unique needs.',
+  'We specialize in tailored, full-scope management solutions for high-end condominium living, partnering with like-minded Boards who value quality, transparency, and long-term stewardship. The result is a management experience that feels personal, proactive, and dependable - because it is.',
+];
 
-  const keyPillars = [
-    {
-      id: 1,
-      title: 'Accessible',
-      description: 'It is easy to reach, use, and understand for everyone. Our software can run the same way.'
-    },
-    {
-      id: 2,
-      title: 'Friendly',
-      description: 'Striving for a software that is reliable and focused on the user\'s privacy.'
-    },
-    {
-      id: 3,
-      title: 'Trusted',
-      description: 'Striving to be a friendly, fun and useful platform.'
-    },
-  ];
+const careerCopy = [
+  'We are a family-run business, and that shows in how we treat our team. Our office is relaxed, supportive, and built on real relationships. This is the kind of place where you actually look forward to coming in each morning - catching up with your work family, settling into your day, and doing meaningful work without unnecessary pressure.',
+  'We believe that great managers do their best work when they are supported, not stretched thin. That is why we prioritize manageable workloads, open communication, and a healthy work-life balance. Our team members have direct access to the President and Vice Presidents of the company, ensuring guidance, mentorship, and support are always close at hand.',
+  'If you are someone who values peace of mind, balance, and being trusted to do your job well, you will feel at home here. We are not about burnout culture or corporate posturing - we are about sustainability, for our clients and our people.',
+  'While we are not always actively hiring, we recognize a great fit when we see one. If you align with our values and believe you would be a strong addition to our team, we are always open to a conversation - and sometimes, we will even make room for the right person.',
+];
 
-  return (
-    <Container>
-      <HeroSection>
-        <HeroContent>
-          <Title>Our Team.</Title>
-          <Subtitle>Our Strength</Subtitle>
-          <Description>
-            Together, we strive to deliver the best solutions for our clients, while also supporting each other's growth and development.
-          </Description>
-        </HeroContent>
-        <ImageContainer>
-          <TeamImage src={propertyTeamImage} alt="Our Team" />
-        </ImageContainer>
-      </HeroSection>
-
-      {/* <KeyPillarsSection>
-        <KeyPillarsTitle>Key Pillars</KeyPillarsTitle>
-        <KeyPillarsSubtitle>
-          We believe that the key pillars that support our vision, mission, and values.
-        </KeyPillarsSubtitle>
-        <PillarsGrid>
-          {keyPillars.map((pillar) => (
-            <PillarCard key={pillar.id}>
-              <PillarIcon>●</PillarIcon>
-              <PillarTitle>{pillar.title}</PillarTitle>
-              <PillarDescription>{pillar.description}</PillarDescription>
-            </PillarCard>
+const MeetTheTeamPage = () => (
+  <Container>
+    <HeroSection>
+      <HeroContent>
+        <Eyebrow>Our Team</Eyebrow>
+        <Title>A Management Firm That Puts People First</Title>
+        <DescriptionStack>
+          {teamCopy.map((paragraph) => (
+            <Description key={paragraph}>{paragraph}</Description>
           ))}
-        </PillarsGrid>
-      </KeyPillarsSection> */}
+        </DescriptionStack>
+      </HeroContent>
+      <ImageContainer>
+        <TeamImage src={propertyTeamImage} alt="Progress Property Management team" />
+      </ImageContainer>
+    </HeroSection>
 
-      {/* <TeamMembersSection>
-        <SectionTitle>Meet the Team</SectionTitle>
-        <TeamGrid>
-          {teamMembers.map((member) => (
-            <TeamCard key={member.id}>
-              <TeamImage src={member.image} alt={member.name} />
-              <TeamInfo>
-                <TeamName>{member.name}</TeamName>
-                <TeamRole>{member.role}</TeamRole>
-              </TeamInfo>
-            </TeamCard>
+    <CareersSection id="opportunities">
+      <CareersContent>
+        <Eyebrow>Careers</Eyebrow>
+        <CareersTitle>Why Work With Us</CareersTitle>
+        <DescriptionStack>
+          {careerCopy.map((paragraph) => (
+            <Description key={paragraph}>{paragraph}</Description>
           ))}
-        </TeamGrid>
-      </TeamMembersSection> */}
-
-      <OpportunitiesSection id="opportunities">
-        <OpportunitiesContent>
-          <OpportunitiesTitle>Want to join us</OpportunitiesTitle>
-          <OpportunitiesSubtitle>email us at <OpportunitiesEmail href="mailto:jobs@ppm.com">jobs@ppm.com</OpportunitiesEmail></OpportunitiesSubtitle>
-        </OpportunitiesContent>
-      </OpportunitiesSection>
-    </Container>
-  );
-};
+        </DescriptionStack>
+        <CTAButton href="mailto:info@progresspm.ca">Start a Conversation</CTAButton>
+      </CareersContent>
+    </CareersSection>
+  </Container>
+);
 
 export default MeetTheTeamPage;
 
 const Container = styled.div`
   width: 100%;
-  background: ${({ theme }) => theme.main.bg};
-  color: ${({ theme }) => theme.nav.fonts.primary};
-  padding-top: 80px;
+  background: ${({ theme }) => theme.main.background};
+  color: ${({ theme }) => theme.main.fonts.primary};
+  padding-top: 110px;
+`;
 
-  @media (max-width: 768px) {
-    padding-top: 60px;
-  }
+const HeroSection = styled.section`
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  align-items: center;
+  max-width: ${({ theme }) => theme.maxWidth};
+  margin: 0 auto;
+  padding: 72px 6.5vw 88px;
+  gap: 56px;
 
-  @media (max-width: 480px) {
-    padding-top: 50px;
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    padding-top: 48px;
   }
 `;
 
-const HeroSection = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px 40px;
-  gap: 60px;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    padding: 20px 20px;
-    gap: 40px;
-  }
-  @media (max-width: 480px) {
-    padding: 40px 16px;
-    gap: 24px;
-  }`;
-
 const HeroContent = styled.div`
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+`;
+
+const Eyebrow = styled.span`
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 1.2rem;
+  color: ${({ theme }) => theme.main.accent};
+`;
+
+const Title = styled.h1`
+  max-width: 760px;
+  font-size: clamp(3.8rem, 6vw, 6.2rem);
+  line-height: 1.05;
+  color: ${({ theme }) => theme.main.fonts.primary};
+`;
+
+const DescriptionStack = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
 `;
 
-const Title = styled.h1`
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin: 0;
-  line-height: 1.2;
-  color: ${({ theme }) => theme.nav.fonts.primary};
-  font-family: ${({ theme }) => theme.main.fontFamily.bold};
-
-  @media (max-width: 768px) {
-    font-size: 2.5rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 2rem;
-  }
-`;
-
-const Subtitle = styled.h2`
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin: 0;
-  line-height: 1.2;
-  color: ${({ theme }) => theme.nav.fonts.primary};
-  font-family: ${({ theme }) => theme.main.fontFamily.bold};
-
-  @media (max-width: 768px) {
-    font-size: 2rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1.5rem;
-  }
-`;
-
 const Description = styled.p`
-  font-size: 1rem;
-  line-height: 1.6;
-  color: ${({ theme }) => theme.nav.fonts.high};
-  margin: 0;
-  max-width: 500px;
+  max-width: 780px;
+  font-size: 1.7rem;
+  color: ${({ theme }) => theme.main.fonts.secondary};
 `;
 
 const ImageContainer = styled.div`
-  flex: 1;
   width: 100%;
-  max-width: 500px;
 `;
 
 const TeamImage = styled.img`
   width: 100%;
-  height: auto;
-  border-radius: 12px;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
-`;
-
-const KeyPillarsSection = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 80px 40px;
-  text-align: center;
-
-  @media (max-width: 768px) {
-    padding: 60px 20px;
-  }
-
-  @media (max-width: 480px) {
-    padding: 40px 16px;
-  }
-`;
-
-const KeyPillarsTitle = styled.h2`
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 0 0 12px 0;
-  color: ${({ theme }) => theme.nav.fonts.primary};
-  font-family: ${({ theme }) => theme.main.fontFamily.bold};
-
-  @media (max-width: 480px) {
-    font-size: 1.5rem;
-  }
-`;
-
-const KeyPillarsSubtitle = styled.p`
-  font-size: 1rem;
-  color: ${({ theme }) => theme.nav.fonts.high};
-  margin: 0 0 40px 0;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-`;
-
-const PillarsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
-
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-`;
-
-const PillarCard = styled.div`
-  padding: 30px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid ${({ theme }) => theme.nav.border};
   border-radius: 12px;
-  text-align: left;
-  transition: all 0.3s ease;
-
-  @media (max-width: 480px) {
-    padding: 20px;
-  }
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: ${({ theme }) => theme.main.highlight};
-  }
+  border: 1px solid ${({ theme }) => theme.main.border};
+  box-shadow: ${({ theme }) => theme.main.shadow};
 `;
 
-const PillarIcon = styled.div`
-  font-size: 2rem;
-  color: ${({ theme }) => theme.main.highlight};
-  margin-bottom: 16px;
+const CareersSection = styled.section`
+  background:
+    linear-gradient(135deg, rgba(11, 13, 18, 0.78), rgba(21, 26, 33, 0.92)),
+    radial-gradient(circle at top right, rgba(255, 157, 27, 0.12), transparent 58%);
+  border-top: 1px solid ${({ theme }) => theme.main.border};
+  padding: 88px 6.5vw 104px;
 `;
 
-const PillarTitle = styled.h3`
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin: 0 0 12px 0;
-  color: ${({ theme }) => theme.nav.fonts.primary};
-  font-family: ${({ theme }) => theme.main.fontFamily.bold};
-
-  @media (max-width: 480px) {
-    font-size: 1.1rem;
-  }
-`;
-
-const PillarDescription = styled.p`
-  font-size: 0.95rem;
-  color: ${({ theme }) => theme.nav.fonts.high};
-  margin: 0;
-  line-height: 1.6;
-`;
-
-const TeamMembersSection = styled.div`
-  max-width: 1200px;
+const CareersContent = styled.div`
+  max-width: 900px;
   margin: 0 auto;
-  padding: 80px 40px;
-
-  @media (max-width: 768px) {
-    padding: 60px 20px;
-  }
-
-  @media (max-width: 480px) {
-    padding: 40px 16px;
-  }
-`;
-
-const SectionTitle = styled.h2`
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 0 0 40px 0;
-  color: ${({ theme }) => theme.nav.fonts.primary};
-  font-family: ${({ theme }) => theme.main.fontFamily.bold};
-  text-align: center;
-
-  @media (max-width: 480px) {
-    font-size: 1.5rem;
-    margin-bottom: 30px;
-  }
-`;
-
-const TeamGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-`;
-
-const TeamCard = styled.div`
-  text-align: center;
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: translateY(-8px);
-  }
-`;
-
-const TeamInfo = styled.div`
-  margin-top: 16px;
-`;
-
-const TeamName = styled.h3`
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin: 0 0 4px 0;
-  color: ${({ theme }) => theme.nav.fonts.primary};
-  font-family: ${({ theme }) => theme.main.fontFamily.bold};
-
-  @media (max-width: 480px) {
-    font-size: 1rem;
-  }
-`;
-
-const TeamRole = styled.p`
-  font-size: 0.95rem;
-  color: ${({ theme }) => theme.nav.fonts.high};
-  margin: 0;
-`;
-
-const OpportunitiesSection = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 80px 40px;
-  background: rgba(255, 255, 255, 0.05);
-  border-top: 1px solid ${({ theme }) => theme.nav.border};
-  border-bottom: 1px solid ${({ theme }) => theme.nav.border};
-
-  @media (max-width: 768px) {
-    padding: 60px 20px;
-  }
-
-  @media (max-width: 480px) {
-    padding: 40px 16px;
-  }
-`;
-
-const OpportunitiesContent = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 18px;
+`;
+
+const CareersTitle = styled.h2`
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: 1.1;
+`;
+
+const CTAButton = styled.a`
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  gap: 16px;
-`;
-
-const OpportunitiesTitle = styled.h2`
-  font-size: 2.5rem;
+  width: fit-content;
+  margin-top: 14px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  background: ${({ theme }) => theme.main.highlight};
+  color: #0b0d12;
+  font-size: 1.3rem;
   font-weight: 700;
-  margin: 0;
-  color: ${({ theme }) => theme.nav.fonts.primary};
-  font-family: ${({ theme }) => theme.main.fontFamily.bold};
-
-  @media (max-width: 768px) {
-    font-size: 2rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1.5rem;
-  }
-`;
-
-const OpportunitiesSubtitle = styled.p`
-  font-size: 1.1rem;
-  color: ${({ theme }) => theme.nav.fonts.high};
-  margin: 0;
-  line-height: 1.6;
-
-  @media (max-width: 480px) {
-    font-size: 1rem;
-  }
-`;
-
-const OpportunitiesEmail = styled.a`
-  color: ${({ theme }) => theme.main.highlight};
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.2s ease;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background 0.2s ease, transform 0.2s ease;
 
   &:hover {
-    text-decoration: underline;
-    opacity: 0.8;
+    background: ${({ theme }) => theme.main.highlightSoft};
+    transform: translateY(-2px);
   }
 `;

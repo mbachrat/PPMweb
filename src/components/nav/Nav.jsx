@@ -197,9 +197,14 @@ function DrawerAppBar(props) {
                     { label: "Status Certificate", href: 'https://app.condocontrol.com/status-certificates/begin-order' },
                     { label: "Vendor Portal", href: 'https://app.vendorpm.com/signup' },
                     { label: "CMRAO", href: 'https://www.cmrao.ca/'},
-                    { label: "CAO", href: 'https://www.condoauthorityontario.ca/' }
+                    { label: "Condo Act Forms", href: 'https://www.condoauthorityontario.ca/resources/condo-forms/' }
                   ]}
                 />
+                <ListItemButton sx={{ textAlign: 'center' }}>
+                  <TexterMobile as={Link} to='/blog'>
+                    Blog
+                  </TexterMobile>
+                </ListItemButton>
                 <ListItemButton sx={{ textAlign: 'center' }}>
                   <TexterMobile as={Link} to='/contact#contact'>
                     Contact
@@ -279,9 +284,10 @@ function DrawerAppBar(props) {
                         { label: "Status Certificate", href: 'https://app.condocontrol.com/status-certificates/begin-order' },
                         { label: "Vendor Portal", href: 'https://app.vendorpm.com/signup' },
                         { label: "CMRAO", href: 'https://cmrao.com/' },
-                        { label: "Condo Act Forms", href: 'https://www.condoauthorityontario.ca/' }
+                        { label: "Condo Act Forms", href: 'https://www.condoauthorityontario.ca/resources/condo-forms/' }
                       ]}
                     />
+                    <Texter as={Link} to="/blog">Blog</Texter>
                   </NavCenter>
                   
                   

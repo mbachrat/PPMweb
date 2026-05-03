@@ -23,7 +23,7 @@ function ServicesOverview() {
   ];
 
   return (
-    <Section data-aos="fade-up" data-aos-once="true">
+    <Section id="services" data-aos="fade-up" data-aos-once="true">
       <SectionHeader>
         <Eyebrow>SERVICES</Eyebrow>
         <Title>Supporting Condominiums at Every Stage</Title>
@@ -87,7 +87,7 @@ const Title = styled.h2`
 `;
 
 const Description = styled.p`
-  font-size: 1.1rem;
+  font-size: 1.6rem;
   color: ${({ theme }) => theme.main.fonts.secondary};
   line-height: 1.7;
 `;
@@ -111,11 +111,11 @@ const ServiceCard = styled(Link)`
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 60px 40px;
+  padding: 48px 36px;
   background: linear-gradient(135deg, ${({ theme }) => theme.main.highlight}dd, ${({ theme }) => theme.main.highlightSoft}dd);
-  border-radius: 16px;
+  border-radius: 12px;
   border: 2px solid ${({ theme }) => theme.main.highlight};
-  min-height: 280px;
+  min-height: 230px;
   cursor: pointer;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -137,13 +137,13 @@ const ServiceCard = styled(Link)`
   }
 
   @media (max-width: 768px) {
-    padding: 48px 32px;
-    min-height: 240px;
+    padding: 40px 28px;
+    min-height: 210px;
   }
 `;
 
 const CardTitle = styled.h3`
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: #0b0d12;
   margin: 0 0 12px 0;
   position: relative;
@@ -152,7 +152,7 @@ const CardTitle = styled.h3`
 `;
 
 const CardDescription = styled.p`
-  font-size: 0.95rem;
+  font-size: 1.4rem;
   color: rgba(11, 13, 18, 0.8);
   margin: 0;
   position: relative;

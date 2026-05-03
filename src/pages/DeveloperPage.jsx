@@ -71,37 +71,6 @@ We partner with real estate developers from pre-construction through stabilizati
         </BenefitsGrid>
       </BenefitsSection>
 
-      <FeaturesSection data-aos="fade-up" data-aos-once="true">
-        <Anchor id="Features" />
-        <SectionTitle>Integration Features</SectionTitle>
-        <FeaturesList>
-          <FeatureItem>
-            <FeatureTitle>Comprehensive API</FeatureTitle>
-            <FeatureDescription>
-              Access all property management data with our well-documented REST API
-            </FeatureDescription>
-          </FeatureItem>
-          <FeatureItem>
-            <FeatureTitle>Real-time Webhooks</FeatureTitle>
-            <FeatureDescription>
-              Receive instant notifications for property updates, payments, and maintenance requests
-            </FeatureDescription>
-          </FeatureItem>
-          <FeatureItem>
-            <FeatureTitle>Advanced Analytics</FeatureTitle>
-            <FeatureDescription>
-              Leverage data-driven insights with our advanced reporting and analytics tools
-            </FeatureDescription>
-          </FeatureItem>
-          <FeatureItem>
-            <FeatureTitle>Custom Workflows</FeatureTitle>
-            <FeatureDescription>
-              Build automated workflows tailored to your specific property management needs
-            </FeatureDescription>
-          </FeatureItem>
-        </FeaturesList>
-      </FeaturesSection>
-
       <CtaSection data-aos="fade-up" data-aos-once="true">
         <Anchor id="DeveloperCTA" />
         <CtaContent>
@@ -110,12 +79,9 @@ We partner with real estate developers from pre-construction through stabilizati
             Join hundreds of developers building on our platform. Access documentation, sandbox environment, and dedicated support.
           </CtaDescription>
           <CtaButtons>
-            <PrimaryCtaButton as={Link} to="/contact#contact">
-              Request API Access
+            <PrimaryCtaButton as={Link} to="/contact#form">
+              Contact Us
             </PrimaryCtaButton>
-            <SecondaryCtaButton href="https://docs.progresspm.ca" target="_blank" rel="noopener noreferrer">
-              View Documentation
-            </SecondaryCtaButton>
           </CtaButtons>
         </CtaContent>
       </CtaSection>
@@ -280,58 +246,6 @@ const BenefitDescription = styled.p`
   line-height: 1.5;
 `;
 
-const FeaturesSection = styled.section`
-  padding: 80px 6.5vw;
-  background: linear-gradient(135deg, rgba(11, 13, 18, 0.5), rgba(21, 26, 33, 0.8));
-  border-top: 1px solid ${({ theme }) => theme.nav.border};
-  border-bottom: 1px solid ${({ theme }) => theme.nav.border};
-
-  @media (max-width: 768px) {
-    padding: 60px 6.5vw;
-  }
-`;
-
-const FeaturesList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 32px;
-  max-width: 1200px;
-  margin: 0 auto;
-  margin-top: 60px;
-
-  @media (max-width: 768px) {
-    gap: 24px;
-    margin-top: 40px;
-  }
-`;
-
-const FeatureItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 28px;
-  background: linear-gradient(135deg, rgba(245, 247, 251, 0.05), rgba(245, 247, 251, 0.02));
-  border: 1px solid ${({ theme }) => theme.nav.border};
-  border-radius: 12px;
-  transition: all 0.3s ease;
-
-  &:hover {
-    border-color: ${({ theme }) => theme.main.highlight};
-    background: linear-gradient(135deg, rgba(245, 247, 251, 0.1), rgba(245, 247, 251, 0.05));
-  }
-`;
-
-const FeatureTitle = styled.h3`
-  font-size: 1.3rem;
-  color: ${({ theme }) => theme.main.fonts.primary};
-`;
-
-const FeatureDescription = styled.p`
-  font-size: 1rem;
-  color: ${({ theme }) => theme.main.fonts.secondary};
-  line-height: 1.6;
-`;
-
 const CtaSection = styled.section`
   padding: 80px 6.5vw;
   background-color: ${({ theme }) => theme.main.bg};
@@ -392,29 +306,5 @@ const PrimaryCtaButton = styled.a`
   &:hover {
     background-color: ${({ theme }) => theme.main.highlightSoft};
     transform: translateY(-2px);
-  }
-`;
-
-const SecondaryCtaButton = styled.a`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 32px;
-  border-radius: 6px;
-  border: 1px solid ${({ theme }) => theme.nav.border};
-  color: ${({ theme }) => theme.nav.fonts.primary};
-  font-family: ${({ theme }) => theme.main.fontFamily.med};
-  font-size: 1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.2s ease;
-
-  &:hover {
-    border-color: ${({ theme }) => theme.main.highlight};
-    color: ${({ theme }) => theme.main.highlight};
-    background: rgba(255, 255, 255, 0.05);
   }
 `;

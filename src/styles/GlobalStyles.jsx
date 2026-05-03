@@ -13,8 +13,6 @@ import cyrRoman from '../assets/fonts/HelveticaNeueCyr-Roman.woff';
 
 
 const GlobalStyles = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
 .stop-scrolling {
   height: 100vh;
   overflow: hidden;
@@ -50,7 +48,6 @@ body {
   min-height: 100vh;
   background-color: ${({ theme }) => theme.main.background};
   color: ${({ theme }) => theme.main.fonts.primary};
-  z-index: -3;
   transition: background-color 0.5s ease-in-out, color 0.3s ease-in-out;
 }
 #root {

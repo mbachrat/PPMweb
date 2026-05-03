@@ -93,7 +93,7 @@ const EmailContactForm = () => {
       <Input type="text" name="condo_corp" onChange={event => setCondocorp(event.target.value)} value={condocorp}/>
       <Label>Building Structure*</Label>
       <Select name="building_structure" onChange={event => setBuildingstructure(event.target.value)} value={buildingstructure} required>
-        <option disabled selected value="" >-- select an option --</option>
+        <option disabled value="">-- select an option --</option>
         <option name="building_structure">Lowrise</option>
         <option name="building_structure">Townhouse</option>
         <option name="building_structure">Detached</option>
@@ -101,7 +101,7 @@ const EmailContactForm = () => {
       </Select>
       <Label>Building Type*</Label>
       <Select name="building_type" onChange={event => setBuildingtype(event.target.value)} value={buildingtype} required>
-      <option disabled selected value="">-- select an option --</option>
+      <option disabled value="">-- select an option --</option>
         <option name="building_type">Residential</option>
         <option name="building_type">Commercial</option>
         <option name="building_type">Mixed (both)</option>

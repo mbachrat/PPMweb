@@ -3,6 +3,7 @@ import { HashLink as Link } from 'react-router-hash-link';
 import styled from 'styled-components';
 import logo from '../../assets/img/ppmlogo.png';
 import fb from '../../assets/symbols/logo-facebook-svgrepo-com.svg';
+import linkedin from '../../assets/symbols/logo-linkedin-svgrepo-com.svg';
 
 function Footer() {
   const navColumns = [
@@ -11,7 +12,7 @@ function Footer() {
       items: [
         { label: 'Resident Registration', href: 'https://app.condocontrol.com/registration', external: true },
         { label: 'Resident Login', href: 'https://app.condocontrol.com/login', external: true },
-        { label: 'Resources', href: 'https://www.condoauthorityontario.ca/resources/', external: true },
+        { label: 'Condo Act Forms', href: 'https://www.condoauthorityontario.ca/resources/condo-forms/', external: true },
       ],
     },
     {
@@ -27,6 +28,7 @@ function Footer() {
       items: [
         { label: 'About', href: '/#About' },
         { label: 'Community', href: '/#Community' },
+        { label: 'Blog', href: '/blog' },
         { label: 'Contact', href: '/contact#contact' },
         { label: 'Request for Proposal', href: '/contact#form' },
       ],
@@ -74,9 +76,14 @@ function Footer() {
       <Divider />
       <Bottom>
         <Left>© {new Date().getFullYear()} Progress Property Management Ltd. All rights reserved.</Left>
-        <SocialLink href='https://www.facebook.com/Progresspm/' target='_blank' rel='noreferrer'>
-          <Socials src={fb} alt='Facebook' />
-        </SocialLink>
+        <SocialLinks aria-label='Social links'>
+          <SocialLink href='https://www.facebook.com/Progresspm/' target='_blank' rel='noreferrer' aria-label='Facebook'>
+            <Socials src={fb} alt='' />
+          </SocialLink>
+          <SocialLink href='https://ca.linkedin.com/company/progress-property-management-limited' target='_blank' rel='noreferrer' aria-label='LinkedIn'>
+            <Socials src={linkedin} alt='' />
+          </SocialLink>
+        </SocialLinks>
       </Bottom>
     </Outer>
   );
@@ -211,6 +218,12 @@ const Left = styled.p`
   font-size: 1.2rem;
 `;
 
+const SocialLinks = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+`;
+
 const SocialLink = styled.a`
   display: inline-flex;
   align-items: center;
@@ -232,4 +245,3 @@ const Socials = styled.img`
   width: 18px;
   filter: invert(1);
 `;
-
