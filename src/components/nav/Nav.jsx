@@ -467,12 +467,11 @@ const SpecialButton = styled.a`
   letter-spacing: 0.08em;
   font-size: 1rem;
   font-weight: 600;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.2s ease;
   white-space: nowrap;
 
   &:hover {
     background-color: ${({ theme }) => theme.main.highlightSoft};
-    transform: translateY(-2px);
   }
 `
 
@@ -523,10 +522,6 @@ const DesktopDropdown = styled.div`
   position: relative;
   display: inline-block;
   padding-bottom: 8px;
-
-  &:hover {
-    padding-bottom: 0;
-  }
 `
 
 const DropdownTrigger = styled.div`
