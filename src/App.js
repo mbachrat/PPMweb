@@ -9,6 +9,7 @@ const MeetTheTeamPage = lazy(() => import('./pages/MeetTheTeamPage'));
 const DeveloperPage = lazy(() => import('./pages/DeveloperPage'));
 const ManagementPage = lazy(() => import('./pages/ManagementPage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
+const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 
 function App() {
   return (
@@ -61,6 +62,15 @@ function App() {
           element={
             <BaseLayout>
               <BlogPage />
+            </BaseLayout>
+          }
+        />
+
+        <Route
+          path='/blog/:slug'
+          element={
+            <BaseLayout>
+              <BlogPostPage />
             </BaseLayout>
           }
         />

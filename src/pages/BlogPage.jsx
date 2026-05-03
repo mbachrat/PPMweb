@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { blogPosts } from '../data/blogPosts';
 
 const BlogPage = () => (
   <Container>
@@ -11,12 +13,23 @@ const BlogPage = () => (
       </Intro>
     </Hero>
 
-    <EmptyState>
-      <EmptyTitle>Articles coming soon</EmptyTitle>
-      <EmptyCopy>
-        This section is ready for company updates, condominium management notes, and helpful resources as new posts are prepared.
-      </EmptyCopy>
-    </EmptyState>
+    <PostsGrid aria-label="Blog articles">
+      {blogPosts.map(post => (
+        <PostCard key={post.slug} to={`/blog/${post.slug}`}>
+          <PostMeta>
+            <span>{post.category}</span>
+            <span>By {post.author}</span>
+            <span>{post.displayDate}</span>
+          </PostMeta>
+          <PostTitle>{post.title}</PostTitle>
+          <PostExcerpt>{post.excerpt}</PostExcerpt>
+          <PostFooter>
+            <span>{post.readTime}</span>
+            <ReadMore>Read article</ReadMore>
+          </PostFooter>
+        </PostCard>
+      ))}
+    </PostsGrid>
   </Container>
 );
 
@@ -54,23 +67,71 @@ const Intro = styled.p`
   color: ${({ theme }) => theme.main.fonts.secondary};
 `;
 
-const EmptyState = styled.section`
+const PostsGrid = styled.section`
   max-width: 900px;
   margin: 0 auto;
-  padding: 40px;
+  display: grid;
+  gap: 24px;
+`;
+
+const PostCard = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 32px;
   border-radius: 12px;
   border: 1px solid ${({ theme }) => theme.main.border};
-  background:
-    linear-gradient(135deg, rgba(26, 30, 37, 0.92), rgba(16, 20, 27, 0.92)),
-    radial-gradient(circle at top right, rgba(255, 157, 27, 0.12), transparent 60%);
+  background: linear-gradient(135deg, rgba(245, 247, 251, 0.05), rgba(245, 247, 251, 0.02));
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    border-color: ${({ theme }) => theme.main.highlight};
+    background: linear-gradient(135deg, rgba(245, 247, 251, 0.09), rgba(245, 247, 251, 0.04));
+    transform: translateY(-3px);
+  }
 `;
 
-const EmptyTitle = styled.h2`
-  font-size: 2.6rem;
-  margin-bottom: 12px;
+const PostMeta = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+
+  span {
+    color: ${({ theme }) => theme.main.fonts.muted};
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
 `;
 
-const EmptyCopy = styled.p`
-  max-width: 620px;
+const PostTitle = styled.h2`
+  font-size: clamp(2.3rem, 3vw, 3.2rem);
+  line-height: 1.2;
+`;
+
+const PostExcerpt = styled.p`
   color: ${({ theme }) => theme.main.fonts.secondary};
+`;
+
+const PostFooter = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  color: ${({ theme }) => theme.main.fonts.muted};
+
+  span {
+    font-size: 1.4rem;
+    color: inherit;
+  }
+
+  @media (max-width: 560px) {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+`;
+
+const ReadMore = styled.span`
+  color: ${({ theme }) => theme.main.highlight} !important;
+  font-family: ${({ theme }) => theme.main.fontFamily.med};
 `;
