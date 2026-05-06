@@ -10,6 +10,7 @@ const DeveloperPage = lazy(() => import('./pages/DeveloperPage'));
 const ManagementPage = lazy(() => import('./pages/ManagementPage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
+const BlogDashboardPage = lazy(() => import('./pages/BlogDashboardPage'));
 
 function App() {
   return (
@@ -71,6 +72,15 @@ function App() {
           element={
             <BaseLayout>
               <BlogPostPage />
+            </BaseLayout>
+          }
+        />
+
+        <Route
+          path='/blog-dashboard'
+          element={
+            <BaseLayout>
+              <BlogDashboardPage />
             </BaseLayout>
           }
         />

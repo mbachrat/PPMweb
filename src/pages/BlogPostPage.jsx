@@ -1,14 +1,62 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { getBlogPostBySlug } from '../data/blogPosts';
+import { getPublishedPostBySlug } from '../lib/blogService';
+import { isSupabaseConfigured, supabaseConfigError } from '../lib/supabaseClient';
 
 const BlogPostPage = () => {
   const { slug } = useParams();
-  const post = getBlogPostBySlug(slug);
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(isSupabaseConfigured);
+  const [error, setError] = useState('');
+  const [notFound, setNotFound] = useState(false);
 
-  if (!post) {
+  useEffect(() => {
+    if (!isSupabaseConfigured) {
+      setError(supabaseConfigError || 'Blog configuration is missing.');
+      return;
+    }
+
+    let mounted = true;
+
+    getPublishedPostBySlug(slug)
+      .then(result => {
+        if (!mounted) return;
+        if (!result) {
+          setNotFound(true);
+          return;
+        }
+        setPost(result);
+      })
+      .catch(() => {
+        if (mounted) {
+          setError('This article is unavailable right now.');
+        }
+      })
+      .finally(() => {
+        if (mounted) {
+          setLoading(false);
+        }
+      });
+
+    return () => {
+      mounted = false;
+    };
+  }, [slug]);
+
+  if (notFound) {
     return <Navigate to="/blog" replace />;
+  }
+
+  if (loading || error || !post) {
+    return (
+      <Container>
+        <Article>
+          <BackLink to="/blog">Back to blog</BackLink>
+          <StatusMessage>{loading ? 'Loading article...' : error}</StatusMessage>
+        </Article>
+      </Container>
+    );
   }
 
   return (
@@ -115,4 +163,8 @@ const SectionTitle = styled.h2`
 const Paragraph = styled.p`
   color: ${({ theme }) => theme.main.fonts.secondary};
   font-size: 1.7rem;
+`;
+
+const StatusMessage = styled.p`
+  color: ${({ theme }) => theme.main.fonts.secondary};
 `;

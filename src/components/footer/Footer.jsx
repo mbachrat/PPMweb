@@ -76,6 +76,7 @@ function Footer() {
       <Divider />
       <Bottom>
         <Left>© {new Date().getFullYear()} Progress Property Management Ltd. All rights reserved.</Left>
+        <AdminLink as={Link} to='/blog-dashboard'>Admin</AdminLink>
         <SocialLinks aria-label='Social links'>
           <SocialLink href='https://www.facebook.com/Progresspm/' target='_blank' rel='noreferrer' aria-label='Facebook'>
             <Socials src={fb} alt='' />
@@ -216,6 +217,16 @@ const Bottom = styled.div`
 const Left = styled.p`
   color: ${({ theme }) => theme.main.fonts.muted};
   font-size: 1.2rem;
+`;
+
+const AdminLink = styled.a`
+  color: ${({ theme }) => theme.main.fonts.muted};
+  font-size: 1.2rem;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.main.highlight};
+  }
 `;
 
 const SocialLinks = styled.div`

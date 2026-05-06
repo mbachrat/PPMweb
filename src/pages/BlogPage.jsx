@@ -1,37 +1,81 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { blogPosts } from '../data/blogPosts';
+import { getPublishedPosts } from '../lib/blogService';
+import { isSupabaseConfigured, supabaseConfigError } from '../lib/supabaseClient';
 
-const BlogPage = () => (
-  <Container>
-    <Hero>
-      <Eyebrow>Blog</Eyebrow>
-      <Title>Progress Updates and Condominium Insights</Title>
-      <Intro>
-        Practical updates, board resources, and community management guidance from the Progress Property Management team.
-      </Intro>
-    </Hero>
+const BlogPage = () => {
+  const [blogPosts, setBlogPosts] = useState([]);
+  const [loading, setLoading] = useState(isSupabaseConfigured);
+  const [error, setError] = useState('');
 
-    <PostsGrid aria-label="Blog articles">
-      {blogPosts.map(post => (
-        <PostCard key={post.slug} to={`/blog/${post.slug}`}>
-          <PostMeta>
-            <span>{post.category}</span>
-            <span>By {post.author}</span>
-            <span>{post.displayDate}</span>
-          </PostMeta>
-          <PostTitle>{post.title}</PostTitle>
-          <PostExcerpt>{post.excerpt}</PostExcerpt>
-          <PostFooter>
-            <span>{post.readTime}</span>
-            <ReadMore>Read article</ReadMore>
-          </PostFooter>
-        </PostCard>
-      ))}
-    </PostsGrid>
-  </Container>
-);
+  useEffect(() => {
+    if (!isSupabaseConfigured) {
+      setError(supabaseConfigError || 'Blog configuration is missing.');
+      return;
+    }
+
+    let mounted = true;
+
+    getPublishedPosts()
+      .then(posts => {
+        if (mounted) {
+          setBlogPosts(posts);
+          setError('');
+        }
+      })
+      .catch(() => {
+        if (mounted) {
+          setError('Blog posts are unavailable right now.');
+        }
+      })
+      .finally(() => {
+        if (mounted) {
+          setLoading(false);
+        }
+      });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  return (
+    <Container>
+      <Hero>
+        <Eyebrow>Blog</Eyebrow>
+        <Title>Progress Updates and Condominium Insights</Title>
+        <Intro>
+          Practical updates, board resources, and community management guidance from the Progress Property Management team.
+        </Intro>
+      </Hero>
+
+      {loading && <StatusMessage>Loading articles...</StatusMessage>}
+      {!loading && error && <StatusMessage>{error}</StatusMessage>}
+      {!loading && !error && blogPosts.length === 0 && <StatusMessage>No articles are published yet.</StatusMessage>}
+
+      {!loading && !error && blogPosts.length > 0 && (
+        <PostsGrid aria-label="Blog articles">
+          {blogPosts.map(post => (
+            <PostCard key={post.slug} to={`/blog/${post.slug}`}>
+              <PostMeta>
+                <span>{post.category}</span>
+                <span>By {post.author}</span>
+                <span>{post.displayDate}</span>
+              </PostMeta>
+              <PostTitle>{post.title}</PostTitle>
+              <PostExcerpt>{post.excerpt}</PostExcerpt>
+              <PostFooter>
+                <span>{post.readTime}</span>
+                <ReadMore>Read article</ReadMore>
+              </PostFooter>
+            </PostCard>
+          ))}
+        </PostsGrid>
+      )}
+    </Container>
+  );
+};
 
 export default BlogPage;
 
@@ -72,6 +116,12 @@ const PostsGrid = styled.section`
   margin: 0 auto;
   display: grid;
   gap: 24px;
+`;
+
+const StatusMessage = styled.p`
+  max-width: 900px;
+  margin: 0 auto;
+  color: ${({ theme }) => theme.main.fonts.secondary};
 `;
 
 const PostCard = styled(Link)`
