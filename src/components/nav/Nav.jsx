@@ -196,7 +196,7 @@ function DrawerAppBar(props) {
                     { label: "Resident login", href: 'https://app.condocontrol.com/login' },
                     { label: "Status Certificate", href: 'https://app.condocontrol.com/status-certificates/begin-order' },
                     { label: "Vendor Portal", href: 'https://app.vendorpm.com/signup' },
-                    { label: "CMRAO", href: 'https://www.cmrao.ca/'},
+                    { label: "CAO", href: 'https://www.condoauthorityontario.ca/'},
                     { label: "Condo Act Forms", href: 'https://www.condoauthorityontario.ca/resources/condo-forms/' }
                   ]}
                 />
@@ -283,7 +283,7 @@ function DrawerAppBar(props) {
                         { label: "Resident login", href: 'https://app.condocontrol.com/login' },
                         { label: "Status Certificate", href: 'https://app.condocontrol.com/status-certificates/begin-order' },
                         { label: "Vendor Portal", href: 'https://app.vendorpm.com/signup' },
-                        { label: "CMRAO", href: 'https://cmrao.com/' },
+                        { label: "CAO", href: 'https://www.condoauthorityontario.ca/' },
                         { label: "Condo Act Forms", href: 'https://www.condoauthorityontario.ca/resources/condo-forms/' }
                       ]}
                     />
@@ -426,6 +426,8 @@ const Texter = styled.a`
   cursor: pointer;
   justify-content: center;
   align-items: center;
+  height: 42px;
+  line-height: 1;
   font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -520,8 +522,17 @@ const TexterMobile = styled.a`
 
 const DesktopDropdown = styled.div`
   position: relative;
-  display: inline-block;
-  padding-bottom: 8px;
+  display: inline-flex;
+  align-items: center;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 16px;
+  }
 `
 
 const DropdownTrigger = styled.div`
@@ -532,6 +543,8 @@ const DropdownTrigger = styled.div`
   cursor: pointer;
   justify-content: center;
   align-items: center;
+  height: 42px;
+  line-height: 1;
   font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
